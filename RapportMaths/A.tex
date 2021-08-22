@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage{dsfont}
+\usepackage{stmaryrd}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{geometry,array,tikz}
+%\geometry{hmargin=2.4cm,vmargin=3.4cm}
+
+\newtheorem{theorem}{Théorème}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemme}
+\renewcommand{\proofname}{Démonstration}
+\renewcommand\bibname{Références}
+\renewcommand{\abstractname}{Resumé}
+\theoremstyle{definition}
+\newtheorem{exmp}{Exemple}[section]
+\providecommand{\keywords}[1]
+{
+  \small
+  \textbf{\textit{Mots clés---}} #1
+}
+%\addtolength{\topmargin}{-10pt}
+%addtolength{\textheight}{40pt}
+\begin{document}
+\title{Marches aléatoires embranchantes dans un milieu variable}
+\author{Yvann Le Fay}
+\date{Août 2021}
+\maketitle
+\begin{abstract}
+Dans cet article, on considère une marche aléatoire embrachant dans un environnement variable (Branching Random Walks in Varying Environment (BRWE)). Si $Z_n(x)$ est une variable aléatoire indiquant la quantité de particules à la ligne $n$ à gauche de $x$, on montre, sous certaines conditions assez générales, que la quantité appelée flux quadratique, $\mathds{E}(Z_n(+\infty)^2)/\mathds{E}(Z_n(+\infty))^2$ évolue en $\sqrt{n}$. De plus, on calcule les flux des ordres supérieures pour en déduire que $\mathds{P}(Z_n(+\infty)=0)$ évolue en $\frac{1}{\sqrt{n}}$. Les notations introduites sont celles de [insérer citation vers KLEBANER 82].
+\end{abstract}
+\subsection{Introduction et notations}
+ Une marche aléatoire embrachante dans un milieu variable (BRWVE) tel qu'on l'entend dans cet article est un processus embrachant ponctuel. On considère qu'à la ligne $n = 0$, il existe une particule \textit{ancêtre} à l'origine dont la présence est indiquée par $Z_0 = \mathds{1}(\{0\})$. A la ligne suivante, les positions des particules forment un processus ponctuel réel noté $X_0$. Définissons $\{X_n : n\in\mathbb{N}\}$ une suite de processus ponctuels indépendants sur $\mathbb{R}$,  et pour $n\in\mathbb{N}$, $\{X_{n,r}\}_r$ une suite de copies indépendantes de $X_n$. On introduit $Z_n$ le processus ponctuel formé à la $n$-ème ligne par les particules de positions$\{z_{n,r}\}_r$, défini par récurrence par, pour tout $B\in\mathcal{B}(\mathbb{R})$, un borélien, 
+\begin{align*}
+Z_{n+1}(B) = \sum_{r} X_{n, r}(B-z_{n,r})\indent Z_0(B) = \mathds{1}_B(\{0\}).
+\end{align*}
+
+On note $Z_n(x) = Z_n(]-\infty, x])$ et $Z_n(\mathbb{R}) = Z_n(+\infty)$, $m_{n, r} = \mathbb{E}(Z_n^r)$, les moments d'ordre $r$. On suppose que les moments d'ordres $1$ et $2$ sont finis pour tout $n$.
+
+Il a été montré dans [citation vers autre papier que] que $\mathbb{E}(Z_n) = \prod_{k=0}^{n-1}\mathbb{E}(X_k)$ et que la suite de variables aléatoires normalisées $\{W_n = Z_n/\mathbb{E}(Z_n)\}_n$ est une martingale.
+\subsection{Flux quadratique}
+Nous définissons le flux quadratique à la ligne $n$, $\Phi_{2}(n)$ comme étant la moyenne de la quantité de particules à la ligne $n$ au carrée après normalisation, $\Phi_{2}(n) = \mathbb{E}(W_n(+\infty)^2)$.
+\subsection{Temps d'arrêt}
+On note $T = \textup{inf}\{n \in \mathbb{N} : Z_n(+\infty) = 0\}$. On a $\mathds{P}(T\geq n) = $
+\begin{proof}
+	On a \begin{align*}
+	\Phi_k(n) = \mathbb{E}(W_n(+\infty)^k) &=\mathbb{E}(\sum_{r}W_n(\{z_{n,r}\}))^k\\& = \sum_{(x_1, \ldots, x_k)} \mathds{P}([W_n(\{x_1\})>0]\cap\ldots\cap [W_n(\{x_k\} > 0]))\end{align*}
+
+	Mais aussi, \begin{align*}
+		\mathds{P}(T\geq n) &= \mathds{P}(\bigcup_{r} [W_n(z_{n,r}) > 0])\\
+				    &=\sum_{\varnothing\neq I\subset \{z_{n,r}\}_r\}}(-1)^{|I|-1}\mathds{P}(\bigcap_{z\in I} [W_n(z) > 0])\\
+				    &=1-(\Phi_2(n)-1)+(\Phi_3(n)-\Phi_2(n))-\ldots\\
+				    &=2\sum_{j=0}^\infty \Phi_{2j+1}(n)-\Phi_{2j}(n)
+	\end{align*}
+\end{proof}
+\end{document}
