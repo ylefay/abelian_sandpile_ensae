@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.5.25)  25 MAY 2021 21:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.5.25)  24 AUG 2021 10:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -570,14 +570,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+stmry on input line 47.
  (/usr/share/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-</home/grothendieck/Downloads/LOGO-ENSAE.png, id=4, 1003.75pt x 1003.75pt>
-File: /home/grothendieck/Downloads/LOGO-ENSAE.png Graphic file (type png)
-<use /home/grothendieck/Downloads/LOGO-ENSAE.png>
-Package pdftex.def Info: /home/grothendieck/Downloads/LOGO-ENSAE.png  used on input line 49.
+<./LOGO-ENSAE.png, id=4, 1003.75pt x 1003.75pt>
+File: ./LOGO-ENSAE.png Graphic file (type png)
+<use ./LOGO-ENSAE.png>
+Package pdftex.def Info: ./LOGO-ENSAE.png  used on input line 49.
 (pdftex.def)             Requested size: 144.53682pt x 144.54pt.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} </home/grothendieck/Downloads/LOGO-ENSAE.png>]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./LOGO-ENSAE.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 54--56
 
  []
@@ -590,90 +590,96 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 16
  (/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-</home/grothendieck/out2/identitefeuille.png, id=28, 100.375pt x 100.375pt>
-File: /home/grothendieck/out2/identitefeuille.png Graphic file (type png)
-<use /home/grothendieck/out2/identitefeuille.png>
-Package pdftex.def Info: /home/grothendieck/out2/identitefeuille.png  used on input line 173.
-(pdftex.def)             Requested size: 70.26201pt x 70.26201pt.
-
+<./out/identitefeuille.png, id=28, 200.75pt x 200.75pt>
+File: ./out/identitefeuille.png Graphic file (type png)
+<use ./out/identitefeuille.png>
+Package pdftex.def Info: ./out/identitefeuille.png  used on input line 173.
+(pdftex.def)             Requested size: 140.52403pt x 140.52403pt.
+ [3 <./out/identitefeuille.png (PNG copy)>]
 Overfull \hbox (44.52205pt too wide) in paragraph at lines 181--182
 []\T1/cmr/m/n/10 Ce graphe est obtenu en util-isant l'instruction Graphes.grapheHyperbolique(C, Graphes.grapheFeuille(N)).
  []
 
-[3 </home/grothendieck/out2/identitefeuille.png (PNG copy)>]
-</home/grothendieck/out2/identitehyperbolique.png, id=33, 100.375pt x 100.375pt>
-File: /home/grothendieck/out2/identitehyperbolique.png Graphic file (type png)
-<use /home/grothendieck/out2/identitehyperbolique.png>
-Package pdftex.def Info: /home/grothendieck/out2/identitehyperbolique.png  used on input line 189.
-(pdftex.def)             Requested size: 70.26201pt x 70.26201pt.
+<./out/identitehyperbolique.png, id=33, 200.75pt x 200.75pt>
+File: ./out/identitehyperbolique.png Graphic file (type png)
+<use ./out/identitehyperbolique.png>
+Package pdftex.def Info: ./out/identitehyperbolique.png  used on input line 189.
+(pdftex.def)             Requested size: 140.52403pt x 140.52403pt.
 
 Overfull \hbox (35.7011pt too wide) in paragraph at lines 194--196
 \T1/cmr/m/n/10 Ce graphe est donné par Graphes.grapheCercle(R, Graphes.grapheFeuille(2*R), r), où Graphes.grapheCercle
  []
 
-</home/grothendieck/out2/avalancheXS--000.png, id=34, 180.675pt x 180.675pt>
-File: /home/grothendieck/out2/avalancheXS--000.png Graphic file (type png)
-<use /home/grothendieck/out2/avalancheXS--000.png>
-Package pdftex.def Info: /home/grothendieck/out2/avalancheXS--000.png  used on input line 205.
-(pdftex.def)             Requested size: 90.33727pt x 90.33727pt.
-</home/grothendieck/out2/avalancheXS--001.png, id=35, 180.675pt x 180.675pt>
-File: /home/grothendieck/out2/avalancheXS--001.png Graphic file (type png)
-<use /home/grothendieck/out2/avalancheXS--001.png>
-Package pdftex.def Info: /home/grothendieck/out2/avalancheXS--001.png  used on input line 207.
-(pdftex.def)             Requested size: 90.33727pt x 90.33727pt.
-</home/grothendieck/out2/avalancheXS--002.png, id=36, 180.675pt x 180.675pt>
-File: /home/grothendieck/out2/avalancheXS--002.png Graphic file (type png)
-<use /home/grothendieck/out2/avalancheXS--002.png>
-Package pdftex.def Info: /home/grothendieck/out2/avalancheXS--002.png  used on input line 209.
-(pdftex.def)             Requested size: 90.33727pt x 90.33727pt.
-</home/grothendieck/out2/avalancheXS--003.png, id=37, 180.675pt x 180.675pt>
-File: /home/grothendieck/out2/avalancheXS--003.png Graphic file (type png)
-<use /home/grothendieck/out2/avalancheXS--003.png>
-Package pdftex.def Info: /home/grothendieck/out2/avalancheXS--003.png  used on input line 211.
-(pdftex.def)             Requested size: 90.33727pt x 90.33727pt.
-</home/grothendieck/out2/avalancheXS--004.png, id=38, 180.675pt x 180.675pt>
-File: /home/grothendieck/out2/avalancheXS--004.png Graphic file (type png)
-<use /home/grothendieck/out2/avalancheXS--004.png>
-Package pdftex.def Info: /home/grothendieck/out2/avalancheXS--004.png  used on input line 214.
-(pdftex.def)             Requested size: 90.33727pt x 90.33727pt.
-</home/grothendieck/out2/avalancheXS--005.png, id=39, 180.675pt x 180.675pt>
-File: /home/grothendieck/out2/avalancheXS--005.png Graphic file (type png)
-<use /home/grothendieck/out2/avalancheXS--005.png>
-Package pdftex.def Info: /home/grothendieck/out2/avalancheXS--005.png  used on input line 216.
-(pdftex.def)             Requested size: 90.33727pt x 90.33727pt.
-[4 </home/grothendieck/out2/identitehyperbolique.png (PNG copy)> </home/grothendieck/out2/avalancheXS--000.png (PNG copy)> </home/grothendieck/out2/avalancheXS--001.png (PNG copy)> </home/grothendieck/out2/avalancheXS--002.png (PNG copy)> </home/grothendieck/out2/avalancheXS--003.png (PNG copy)> </home/grothendieck/out2/avalancheXS--004.png (PNG copy)> </home/grothendieck/out2/avalancheXS--005.png (PNG copy)>] [5]
+</home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--000.png, id=34, 200.75pt x 200.75pt>
+File: /home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--000.png Graphic file (type png)
+<use /home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--000.png>
+Package pdftex.def Info: /home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--000.png  used on input line 205.
+(pdftex.def)             Requested size: 90.33665pt x 90.33665pt.
+</home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--001.png, id=35, 200.75pt x 200.75pt>
+File: /home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--001.png Graphic file (type png)
+<use /home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--001.png>
+Package pdftex.def Info: /home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--001.png  used on input line 207.
+(pdftex.def)             Requested size: 90.33665pt x 90.33665pt.
+</home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--002.png, id=36, 200.75pt x 200.75pt>
+File: /home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--002.png Graphic file (type png)
+<use /home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--002.png>
+Package pdftex.def Info: /home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--002.png  used on input line 209.
+(pdftex.def)             Requested size: 90.33665pt x 90.33665pt.
+</home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--003.png, id=37, 200.75pt x 200.75pt>
+File: /home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--003.png Graphic file (type png)
+<use /home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--003.png>
+Package pdftex.def Info: /home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--003.png  used on input line 211.
+(pdftex.def)             Requested size: 90.33665pt x 90.33665pt.
+</home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--004.png, id=38, 200.75pt x 200.75pt>
+File: /home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--004.png Graphic file (type png)
+<use /home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--004.png>
+Package pdftex.def Info: /home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--004.png  used on input line 214.
+(pdftex.def)             Requested size: 90.33665pt x 90.33665pt.
+</home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--005.png, id=39, 200.75pt x 200.75pt>
+File: /home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--005.png Graphic file (type png)
+<use /home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--005.png>
+Package pdftex.def Info: /home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--005.png  used on input line 216.
+(pdftex.def)             Requested size: 90.33665pt x 90.33665pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[4 <./out/identitehyperbolique.png (PNG copy)>] [5 </home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--000.png (PNG copy)> </home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--001.png (PNG copy)> </home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--002.png (PNG copy)> </home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--003.png (PNG copy)> </home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--004.png (PNG copy)> </home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--005.png (PNG copy)>] [6]
 LaTeX Font Info:    Trying to load font information for U+dsrom on input line 270.
  (/usr/share/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-) [6]
-</home/grothendieck/tipe/wwp.png, id=58, 277.035pt x 170.6375pt>
+)
+</home/grothendieck/tipe/wwp.png, id=55, 277.035pt x 170.6375pt>
 File: /home/grothendieck/tipe/wwp.png Graphic file (type png)
 <use /home/grothendieck/tipe/wwp.png>
 Package pdftex.def Info: /home/grothendieck/tipe/wwp.png  used on input line 283.
 (pdftex.def)             Requested size: 221.6283pt x 136.51016pt.
-</home/grothendieck/tipe/wwpp.png, id=59, 361.35pt x 217.81375pt>
+</home/grothendieck/tipe/wwpp.png, id=56, 361.35pt x 217.81375pt>
 File: /home/grothendieck/tipe/wwpp.png Graphic file (type png)
 <use /home/grothendieck/tipe/wwpp.png>
 Package pdftex.def Info: /home/grothendieck/tipe/wwpp.png  used on input line 294.
 (pdftex.def)             Requested size: 289.0804pt x 174.25122pt.
- [7 </home/grothendieck/tipe/wwp.png (PNG copy)> </home/grothendieck/tipe/wwpp.png (PNG copy)>] (./p3.aux)
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[7 </home/grothendieck/tipe/wwp.png (PNG copy)>] [8 </home/grothendieck/tipe/wwpp.png (PNG copy)>] (./p3.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
  19778 strings out of 478994
- 373632 string characters out of 5864751
- 874819 words of memory out of 5000000
+ 373759 string characters out of 5864751
+ 875819 words of memory out of 5000000
  36910 multiletter control sequences out of 15000+600000
  422056 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  87i,14n,89p,1935b,1180s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb></usr/share/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb>
-Output written on p3.pdf (7 pages, 348159 bytes).
+Output written on p3.pdf (8 pages, 359314 bytes).
 PDF statistics:
- 137 PDF objects out of 1000 (max. 8388607)
- 92 compressed objects within 1 object stream
+ 140 PDF objects out of 1000 (max. 8388607)
+ 94 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  68 words of extra memory for PDF output out of 10000 (max. 10000000)
 

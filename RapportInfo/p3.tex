@@ -46,7 +46,7 @@
 \date{Mai 2021}
 \maketitle
 \begin{center}
-	\includegraphics[height=2in]{/home/grothendieck/Downloads/LOGO-ENSAE.png}
+	\includegraphics[height=2in]{./LOGO-ENSAE.png}
 \end{center}
 \newpage
 \section{Introduction au modèle des piles abéliennes}
@@ -155,7 +155,7 @@ On admet provisoirement qu'étant donné un graphe $\mathcal{G}$, et la fonction
 
 On appelle identité, et on note $I$, la configuration telle que, pour toute configuration $\omega$ sur le graphe $\mathcal{G}$, on ait : $\mathfrak{s}(I+\omega)=\mathfrak{s}(\omega)$. On a alors le résultat suivant : notant $c$ la configuration obtenue en affectant à chaque sommet d'un graphe $\mathcal{G}$ une hauteur égale à son degré (i.e. la plus petite hauteur rendant ce sommet instable, $\Delta_{x,x}$), on a $I=\mathfrak{s}(2c-\mathfrak{s}(2c))$. On utilise ce résultat pour coder un algorithme de calcul de l'identité pour le graphe suivant :
 \begin{align*}
-	\mathcal{G} = \{(X,X+\delta) : X\in\llbracket 1, N\rrbracket^2, \delta\in\{-1,1\}\times\{-1,1\}\}
+	\mathcal{G} = \{(X,X+\delta) : X\in\llbracket 1, N\rrbracket^2, \delta\in\{-1,1\}\times\{0\}\cup\{0\}\times\{-1,1\}\}
 \end{align*}
 
 
@@ -170,12 +170,12 @@ En affectant une couleur à chaque hauteur, on peut représenter graphiquement l
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.7]{/home/grothendieck/out2/identitefeuille.png}
+	\includegraphics[scale=0.7]{./out/identitefeuille.png}
 \end{figure}
 
 On peut également calculer l'identité pour un graphe plus élaboré : ainsi, soit le graphe obtenu en ôtant au graphe précédent l'intérieur d'une hyperbole (et en considérant que ce qu'on a ôté fait maintenant partie de ce qu'on appelle le puits) :
 \begin{align*}
-	\mathcal{G} = \{(X,X+\delta) : X=(x_1,x_2)\in\llbracket1,N\rrbracket^2 : x_1x_2\leq C, \delta\in\{-1,1\}\times\{-1,1\}\} 
+	\mathcal{G} = \{(X,X+\delta) : X=(x_1,x_2)\in\llbracket1,N\rrbracket^2 : x_1x_2\leq C, \delta\in \{-1,1\}\times \{0\}\cup\{0\}\times\{-1,1\}\} 
 \end{align*}
 
 Ce graphe est obtenu en utilisant l'instruction \textup{Graphes.grapheHyperbolique(C, Graphes.grapheFeuille(N))}. La fonction \textup{Graphes.grapheHyperbolique} est définie en utilisant la fonction \textup{grapheConditionnel} qui permet de réaliser l'intersection entre la structure d'un graphe et une condition sur les sommets de ce graphe (ici $x_1x_2\leq C$).
@@ -186,11 +186,11 @@ Ce graphe est obtenu en utilisant l'instruction \textup{Graphes.grapheHyperboliq
 \end{lstlisting}
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.7]{/home/grothendieck/out2/identitehyperbolique.png}
+	\includegraphics[scale=0.7]{./out/identitehyperbolique.png}
 \end{figure}
 Considérons à présent un troisième exemple : le graphe suivant est celui obtenu à partir du graphe feuille, en se limitant aux sommets appartenant à $\mathcal{B}_{\mathbb{Z}^2}(0,||.||_r,R)$, la boule de rayon $R$ de $\mathbb{Z}^2$, avec $||(i,j)||_r= (|i|^r+|j|^r)^{1/r}$ :
 \begin{align*}
-	\mathcal{G}(r) = \{(x,x+\delta) : x\in\mathcal{B}_{\mathbb{Z}^2}(0,||.||_r, R), \delta\in\{-1,1\}\times\{-1,1\}\}
+	\mathcal{G}(r) = \{(x,x+\delta) : x\in\mathcal{B}_{\mathbb{Z}^2}(0,||.||_r, R), \delta\in\{-1,1\}\times\{0\}\cup\{0\}\times\{-1,1\}\}
 \end{align*}
 Ce graphe est donné par \textup{Graphes.grapheCercle(R, Graphes.grapheFeuille(2*R), r)}, où \textup{Graphes.grapheCercle} est définie en utilisant la fonction \textup{grapheConditionnel}. Le code suivant renvoie les identités sur ce graphe pour $r \in\{0.5, 1, 1.5, 2, 2.5, 3\}$. 
 \begin{lstlisting}
@@ -202,18 +202,18 @@ for (int k=0; k<6; k++) {
 \end{lstlisting}
 \begin{figure}[h]
 \centering
-\subfloat{{\includegraphics[scale=0.5]{/home/grothendieck/out2/avalancheXS--000.png}}}
+\subfloat{{\includegraphics[scale=0.45]{/home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--000.png}}}
 \qquad
-\subfloat{{\includegraphics[scale=0.5]{/home/grothendieck/out2/avalancheXS--001.png}}}
+\subfloat{{\includegraphics[scale=0.45]{/home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--001.png}}}
 \qquad
-\subfloat{{\includegraphics[scale=0.5]{/home/grothendieck/out2/avalancheXS--002.png}}}
+\subfloat{{\includegraphics[scale=0.45]{/home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--002.png}}}
 \qquad
-\subfloat{{\includegraphics[scale=0.5]{/home/grothendieck/out2/avalancheXS--003.png}}}
+\subfloat{{\includegraphics[scale=0.45]{/home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--003.png}}}
 \qquad
 \newline
-\subfloat{{\includegraphics[scale=0.5]{/home/grothendieck/out2/avalancheXS--004.png}}}
+\subfloat{{\includegraphics[scale=0.45]{/home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--004.png}}}
 \qquad
-\subfloat{{\includegraphics[scale=0.5]{/home/grothendieck/out2/avalancheXS--005.png}}}
+\subfloat{{\includegraphics[scale=0.45]{/home/grothendieck/1A/ENSAE1A/info/out/avalancheXS--005.png}}}
 \end{figure}
 \newpage
 \section{Description de l'algorithme de stabilisation, preuve de terminaison et complexité}
@@ -257,14 +257,14 @@ Nous avions tout d'abord envisagé de stocker la matrice laplacienne dans un tab
 \subsection{Concernant des fonctions optimisées sur certains graphes}
 Au cours de l'élaboration de notre programme, nous avons dû faire des compromis entre la concision du code et la vitesse d'exécution de celui-ci. La fonction permettant de lister les sites instables et qui fonctionne sur tous les graphes est celle qui s’exécute en $O(|S|)$. Elle calcule l'ensemble des sites $x$ instables. Sans hypothèse supplémentaire sur la localisation des sites instables à chaque étape, il n'est pas possible de faire mieux. 
 
-Dans certains cas particuliers, il est cependant possible d’obtenir des solutions plus rapides. Ainsi, pour le graphe servant à modéliser un effondrement vers le bas présenté dans la première partie de ce document, il est clair, en numérotant les lignes de haut en bas ($t=1$ à $N$), que la présence d'un seul site instable en $t = 0$ implique que les sites instables à l'étape suivante se trouvent uniquement sur la ligne $t = 1$, puisque l'effondrement d’un sommet n'affecte que des sommets situés sur la ligne se trouvant immédiatement en-dessous de celui-ci. De la sorte, au lieu de vérifier la hauteur de chaque case du graphe, il suffit, à la $t$-ième itération, de vérifier la hauteur des sites sur la ligne correspondante $t-1$. La fonction unStab ainsi adaptée à ce graphe est de complexité linéaire en la largeur des lignes, ainsi elle nous permet de gagner au moins un facteur $O(\sqrt{|S|}) = O(n)$. 
+Dans certains cas particuliers, il est cependant possible d’obtenir des solutions plus rapides. Ainsi, pour le graphe servant à modéliser un effondrement vers le bas présenté dans la première partie de ce document, il est clair, en numérotant les lignes de haut en bas ($t=1$ à $N$), que la présence d'un seul site instable en $t = 0$ implique que les sites instables à l'étape suivante se trouvent uniquement sur la ligne $t = 1$, puisque l'effondrement d’un sommet n'affecte que des sommets situés sur la ligne se trouvant immédiatement en-dessous de celui-ci. De la sorte, au lieu de vérifier la hauteur de chaque case du graphe, il suffit, à la $t$-ième itération, de vérifier la hauteur des sites sur la ligne correspondante $t-1$. La fonction unStab ainsi adaptée à ce graphe est de complexité linéaire en la largeur des lignes, ainsi elle nous permet de gagner au moins un facteur $\mathcal{O}(\sqrt{|S|}) = O(n)$. 
 De plus, en utilisant un théorème que l'on verra par la suite, on sait que la probabilité qu'un effondrement atteigne une ligne $t$ ou plus est proportionnelle à $1/\sqrt{t}$. Ainsi, une proportion $p$ des configurations générées aléatoirement et dérangées en $t=0$ se stabilisent en un temps $t$ inférieur à $T\approx C/(1-p)^2$ avec $C< 1$ (avec $C = p_0^2$ et $p_0$ la probabilité qu'une configuration dure un temps $t\geq 2$, $p_0$ est facilement calculable). 
 Comme à chaque étape $t$,  $|\Sigma|\leq dt =3t$, on sait que UnStab est en $O(t)=O((1-p)^{-2})$, qui est un coût constant en la taille du graphe. Cela permet d'obtenir une complexité en  $O(\sqrt{|S|})=O(n)$, avec une constante de proportionnalité qui évolue en fonction de $p$, en $(1-p)^{-4}$. C'est un coût sous-linéaire en la taille du graphe !
 Pour cette raison, vous trouverez dans le code des fonctions avec différents suffixes, tels que DN pour "Downward neighbours". Celles-ci sont adaptées aux graphes qui admettent une direction d'effondrement vers le bas.
 \section{Loi en puissance du flux carré moyen}
 Reprenons le graphe introduit au début qui modélise un effondrement dirigé vers le bas, on pose
 \begin{align*}
-\mathcal{G}(E, \varphi) = \{(s,s+(\delta,1))_{\textup{de poids} \varphi_\delta} : \delta\in E, s=(x,t)\in\mathbb{Z}\times\mathbb{N}\}
+\mathcal{G}(E, \varphi) = \{(s,s+(\delta,1))_{\textup{de poids } \varphi_\delta} : \delta\in E, s=(x,t)\in\mathbb{Z}\times\mathbb{N}\}
 \end{align*}
 
 L'exemple donné au départ correspond à $E= \{-1,0,1\}$ et $\varphi = (1, 1, 1)$. L'objectif est d'étudier l'évolution d'une configuration tirée uniformément après un effondrement. Le principal théorème que nous avons démontré est que dans certaines bonnes conditions, ici vérifiées, le flux carré moyen, c'est-à-dire le carré du nombre de site instables à l'étape $t$ de l'effondrement, défini par $\Phi(t) = \mathbb{E}\bigg(\sum_{x\in\mathbb{Z}} \mathds{1}((x,t) \textup{s'effondre })\bigg)^2$ est, pour une certaine constante $\gamma$ calculable, tel que
@@ -283,7 +283,7 @@ Après tracé des points ainsi obtenus, on constate la validité du théorème,
 	\includegraphics[scale=0.8]{/home/grothendieck/tipe/wwp.png}
 \end{figure}
 
-Comme $\Phi(t)\propto \sqrt{t}$, la probabilité qu'une avalanche s'étend plus loin que sur $t$ ligne est proportionnelle à $1/\sqrt{t}$. On vérifie ce théorème en calculant un histogramme de la distribution de la taille des effondrements puis en calculant la fonction de survie empirique.
+La probabilité qu'une avalanche s'étend plus loin que sur $t$ ligne est proportionnelle à $1/\sqrt{t}$ (voir le compte-rendu mathématique pour les références). On vérifie ce théorème en calculant un histogramme de la distribution de la taille des effondrements puis en calculant la fonction de survie empirique.
 \begin{lstlisting}
 Hashtable<Integer, Integer> resultat = histogramme3(10000, M,N);
 \end{lstlisting}
