@@ -40,11 +40,12 @@
 	
 	L'objectif de ce papier est de généraliser et approfondir les travaux de Dhar dans \cite{DHARBIS}. Nous démontrons d'abord que l'équation qui régit la probabilité $p : (x,t) \mapsto p(x,t)$ qu'un site $x$ s'effondre à l'instant $t$ est identique à celle qui régit une marche aléatoire dont les pas dépendent du graphe que l'on s'est donné (théorème 1.1). En particulier, on montre que le calcul qu'un site $(x,t)$ est une somme réalisée sur l'ensemble des solutions d'une équation diophantienne linéaire dépendante de $\varphi$, $x$ et $t$ (lemme 1.2). Dans le cas particulier où l'effondrement est isotropique (en ce sens, chaque arête du graphe a autant de probabilité d'être empruntée), ce calcul revient à dénombrer le nombre de solutions à cette équation diophantienne. 	
 	Nous donnons l'expression exacte de la probabilité qu'un site s'effondre lorsque $\varphi(\delta, t) = 1/(2n+1)\mathds{1}(\delta)_{k\llbracket -n,n\rrbracket}$ (théorème 1.10) en exploitant le théorème 1.6 et les calculs menés dans \cite{h2}. Nous montrons toujours dans ce cas que la taille d'un effondrement évolue en $n\sqrt{t}$ (théorème 1.7), (théorème 1.9), mieux encore, on montre que la loi de probabilité $(p(x,t))_{x\in\mathbb{Z}}$ est bien approchée par une loi normale centrée d'écart-type $\sqrt{n(n+1)t/3}$. Sous la condition d'isotropie de l'effondrement, nous proposons une généralisation du calcul du flux carré $\Phi$ défini par Dhar dans \cite{DHARBIS} (théorème 2.1). Nous confirmons par le calcul que le flux carré $\Phi$ évolue en $\sqrt{t}$ pour $t$ grand, en fait, nous obtenons un équivalent de $\Phi$ (théorème 2.1).
-	Sous la conjecture supportée par des tests numériques que les flux d'ordres $k$, $\Phi_k$ évoluent proportionnellement en $t^{(k-1)/2}$, nous faisons le lien entre ces flux et le temps de relaxation du système et nous conjecturons que le probabilité que le système ne soit pas relaxé à l'instant $t$, qu'on note $\mathds{P}(T\geq t)$, est proportionnelle à $1/\sqrt{t}$. 
+	Nous faisons la conjecture, supportée par des tests numériques que les flux d'ordres $k$, $\Phi_k$ évoluent proportionnellement en $t^{(k-1)/2}$.  
 	%Les résultats confortent les résultats empiriques de \cite{TGCCS}.
 
 	Dans une dernière partie, nous généralisons les équations régissant $p$ à des mesures quelconques puis à des temps continus. Des intégrales de chemins apparaissent.  
-
+	
+	%Le lecteur soucieux davoir une connaissance  des marches aléatoires embranchantes dans les milieux variables
 	\keywords{marche aléatoire embranchante dans des milieux variables (BRWE),  équation de diffusion, équation de Chapman-Kolmogorov, chaînes de Markov, équations diophantiennes, théorème centrale-limite, intégrale de chemin}
 \end{abstract}
 \newpage 
@@ -372,7 +373,7 @@ Le flux carré moyen $\Phi$ est défini par
 
 \begin{theorem}
 	En dimension $d=1$, supposons que $\varphi$ ne dépend pas de $t$
-	\end{enumerate}
+	%\end{enmerate}
 	alors \begin{align*}
 		\Phi(t) \sim \frac{1}{\gamma}\sqrt{\frac{t}{\pi}}
 	\end{align*}
@@ -597,28 +598,35 @@ Puis,
 \begin{align*}
 	p(t)(x) = \int_{z\in\mathbb{R}}p(0)(z)\int_{y(t)-y(0)=x-z} \mathcal{P}(y)\mathcal{D}y\mathrm{d}z
 \end{align*}
-\section{Temps d'arrêt du modèle discret}
-\subsection{Flux d'ordre supérieur et temps d'effondrement}
-On définit le flux d'ordre $k$ pour $k\geq 1$ par
-\begin{align*}
-	\Phi_k(t) = \mathds{E}\bigg(\sum_{x\in \mathbb{Z}} A(s_x)\bigg)^k = \sum_{X=(x_1,\ldots,x_k)\in\mathbb{Z}^k}\mathds{P}(s_{x_1}\cap \ldots \cap s_{x_k})
-\end{align*}
+\section{Temps de relaxation du modèle discret}
+\subsection{Temps de relaxation}
+%On définit le flux d'ordre $k$ pour $k\geq 1$ par
+%\begin{align*}
+%	\Phi_k(t) = \mathds{E}\bigg(\sum_{x\in \mathbb{Z}} A(s_x)\bigg)^k = \sum_{X=(x_1,\ldots,x_k)\in\mathbb{Z}^k}\mathds{P}(s_{x_1}\cap \ldots \cap s_{x_k})
+%\end{align*}
 
-De manière à ce que le flux carré moyen soit noté $\Phi_2(t)$. Définissons la variable $T = \inf\{t\in \mathbb{N} : \cap_{x\in \mathbb{Z}} [A(s_x) = 0]\}$, étant donné une configuration $\omega$, $T(\omega)$ est le temps d'effondrement. On a  
-\begin{lemma}
+Définissons la variable de temps de relaxation, $T = \inf\{t\in \mathbb{N} : \cap_{x\in \mathbb{Z}} [A(s_x) = 0]\}$, étant donné une configuration $\omega$, $T(\omega)$ est le temps d'effondrement. On a  
+\begin{theorem}
+
+Dans le cas où $\varphi$ est indépendante de $t$, d'après \cite{1T1}, pour une certaine constante $C$ connue dépendante de $\varphi$, on a
 	\begin{align*}
-		\mathds{P}(T\geq t) = 2\sum_{n=0}^\infty \Phi_{2n+1}(t)-\Phi_{2n}(t)
+		\lim_{t\to +\infty} \sqrt{t}\mathds{P}(T>t) = C %2\sum_{n=0}^\infty \Phi_{2n+1}(t)-\Phi_{2n}(t)
 \end{align*}
-\begin{proof}
-	On a par la formule du crible 
-	\begin{align*}
-		\mathds{P}(T\geq t) &= \mathds{P}(\bigcup_{x\in \mathbb{Z}} s_x)\\
-				    &= \sum_{\varnothing \neq I \subset \mathbb{Z}} (-1)^{|I|-1} \mathds{P}(\bigcap_{i\in I}s_x)\\
-				    &= 1-(\Phi_2(t)-1)+(\Phi_3(t)-\Phi_2(t))-\ldots\\
-				    &= 2\sum_{n=0}^{\infty}\Phi_{2n+1}(t)-\Phi_{2n}(t)
-	\end{align*}
-\end{proof}
+%\begin{proof}
+	%On a par la formule du crible 
+	%\begin{align*}
+	%	\mathds{P}(T>t) &= \mathds{P}(\bigcup_{x\in \mathbb{Z}} s_x)\\
+	%			    &= \sum_{\varnothing \neq I \subset \mathbb{Z} : |I|<\infty} (-1)^{|I|-1} \mathds{P}(\bigcap_{i\in I}s_x)\\
+	%			    &= 1-(\Phi_2(t)-1)+(\Phi_3(t)-\Phi_2(t))-\ldots\\
+	%			    &= 2\sum_{n=0}^{\infty}\Phi_{2n+1}(t)-\Phi_{2n}(t)
+	%\end{align*}
+%\end{proof}
 \end{lemma}
+\section{Conjecture sur les flux d'ordre supérieur}
+On définit le flux d'ordre $k$ pour $k\geq 1$ par 
+\begin{align*}
+	\Phi_k(t) = \mathds{E}\bigg(\sum_{x\in\mathbb{Z}} A(s_x)\bigg)^k = \sum_{X=(x_1,\ldots,x_k)\in\mathbb{Z}^k}\mathds{P}(s_{x_1}\cap\ldots\caps_{x_k})
+\end{align*}
 
 En reprenant le calcul de $\Phi_2$, on pose par analogie $K_k(t) = \sum_{x\in\mathbb{Z}}p(x,t)^k$. La conjecture (motivée par des résultats numériques) que nous faisons est que
 \begin{align*}
@@ -629,13 +637,13 @@ pour une certaine constante $C_k$, puis similairement, on obtient $\Phi_k(t) \si
 
 En utilisant $\sum_{t'=0}^t (-1)^{t'}\begin{pmatrix}(1-k)/2\\t'\end{pmatrix} \sim t^{(k-1)/2}C_{2, k}$, on aurait, $\Phi_k(t) \sim C_k C_{2,k}t^{(k-1)/2}$ avec $C_{2, 2k} = 2^k/(2k-1)!!\sqrt{\pi}$ et $C_{2,2k+1}=1/k!$. De manière à ce qu'on ait
 \begin{align*}
-	\mathds{P}(T\geq t) \sim 2\sum_{n=0}^{+\infty} t^n\bigg(\frac{C_{2n+1}}{n!} - \frac{C_{2n}2^n\sqrt{\pi}}{(2n-1)!!\sqrt{t}}\bigg)
+	\Phi_{2n+1}(t) \sim \frac{C_{2n+1}}{n!}t^{(k-1)/2} \indent \Phi_{2n}(t) \sim \frac{C_{2n}2^n\sqrt{\pi}}{(2n-1)!!} t^{(k-1)/2}
 \end{align*}
 
-La conjecture que nous faisons est que
-\begin{align*}
-	\mathds{P}(T\geq t)\propto \frac{1}{\sqrt{t}}
-\end{align*}
+
+
+
+
 
 
 
@@ -703,7 +711,7 @@ La conjecture que nous faisons est que
 %			avec pour condition initiale, $\tilde{p}(\Theta,t_0|s_0)=e^{ix_0.\Theta}$. Cette équation a pour solution
 %			\begin{align*}
 %				\tilde{p}(\Theta, t|s_0) = \exp\bigg(\int_{t_0}^{t}\sum_{\delta\in \mathcal{E}} (e^{i\delta.\Theta}-1)\varphi^*_{\delta,\tau}\mathrm{d}\tau\bigg)e^{ix_0.\Theta} = e^{-(t-t_0)}e^{ix_0.\Theta}\exp\bigg(\int_{t_0}^t \sum_{\delta\in \mathcal{E}}e^{i\delta.\Theta}\varphi^*_{\delta,\tau}\mathrm{d}\tau\bigg)
-			\end{align*}
+%			\end{align*}
 
 			%En calculant la transformée Fourier inverse, on obtient,
 			%\begin{align*}
@@ -713,11 +721,11 @@ La conjecture que nous faisons est que
 %			Effectuons un développement des exponentielles dans $\tilde{p}(\Theta, t|s_0)$, \begin{align*}
 %				e^{t-t_0}\tilde{p}(\Theta,t|s_0) &=e^{ix_0.\Theta} \sum_{k=0}^{+\infty}\frac{1}{k!}\bigg(\sum_{\delta\in \mathcal{E}}\int_{t_0}^te^{i\delta.\Theta}\varphi^*_{\delta,\tau}\mathrm{d}\tau\bigg)^k\\
 %								 &=e^{ix_0.\Theta}\sum_{k=0}^{+\infty}\sum_{|\alpha|=k}\frac{1}{\alpha_1!\ldots\alpha_{|\mathcal{E}|}!}\exp(i\Theta.\sum_{\delta_i\in \mathcal{E}}\alpha_i\delta_i)\prod_{\delta_i\in \mathcal{E}} \bigg(\int_{t_0}^t \varphi^*_{\delta_i,\tau}\mathrm{d\tau}\bigg)^{\alpha_i}
-			\end{align*}
+%			\end{align*}
 
 %			En appliquant la transformée de Fourier inverse, \begin{align*}
 %				e^{t-t_0}p(x,t|s_0) = \sum_{k=0}^{+\infty}\sum_{|\alpha|=k : x_0-x+\sum{\alpha_i\delta_i} = 0} \frac{1}{\alpha_1!\ldots\alpha_{|\mathcal{E}|}!}\prod_{\delta_i\in \mathcal{E}}\bigg(\int_{t_0}^t \varphi^*_{\delta_i,\tau}\mathrm{d}\tau\bigg)^{\alpha_i} 
-			\end{align*}
+%\ll			\end{align*}
 
 %			Comme prévu, la somme ne porte que sur l'ensemble des chemins composés de déplacements admissibles $\delta\in E$ partant de $x_0$ arrivant à $x$. 
 			%\section{Modèle continu en temps : inégalités et expressions asymptotiques}

@@ -11,10 +11,20 @@ Paul Expert Kim Christensen Nicky~Zachariou Deepak~Dhar, Gunnar~Pruessner.
 \newblock Directed abelian sandpile with multiple downward neighbors.
 \newblock {\em Phys. Rev. E 93, 042107}, 2016.
 
+\bibitem[GL15]{1T1}
+Jean-François~Le Gall and Shen Lin.
+\newblock {The range of tree-indexed random walk in low dimensions}.
+\newblock {\em The Annals of Probability}, 43(5):2701 -- 2728, 2015.
+
 \bibitem[JAA14]{TGCCS}
 M.~Schäfer E.Z. Welty S. O'Neel T.C. Bartholomaus Yan Liu T. I. Riikilä T.
   Zwinger J. Timonen J. C.~Moore J.~A.~Astrom, D.~Vallot.
 \newblock Termini of calving glaciers as self-organized critical systems.
 \newblock {\em Nature geoscience}, 2014.
+
+\bibitem[Kle82]{10.2307/1426526}
+C.~F. Klebaner.
+\newblock Branching random walk in varying environments.
+\newblock {\em Advances in Applied Probability}, 14(2):359--367, 1982.
 
 \end{thebibliography}
