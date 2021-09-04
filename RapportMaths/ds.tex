@@ -34,7 +34,7 @@
 \maketitle
 \begin{abstract}
 	L'étude numérique proposée dans \cite{TGCCS} de la taille des blocs de glaces qui se détâchent lors d'un vêlage, montre que cette grandeur suit une loi de puissance similaire à celles retrouvées dans l'étude des grandeurs moyennes associées au modèle des piles abéliennes. Dans ce cadre, les piles abéliennes modélisent un effondrement de particules qui à l'échelle locale suivent un processus de diffusion probabiliste caractérisé par un graphe. 	
-	L'objet de ce travail est de calculer certaines grandeurs moyennes ($\Phi$ le flux carré moyen, $\sigma$ le coefficient de diffusion) ainsi que des profils asymptotiques pour le modèle des piles abéliennes sur une certaine classe de graphes donnés par la fonction de pondération $\varphi$ qui leur est associée. Il est à noter que le modèle ainsi étudié est très proche des modèles des marches aléatoires embranchantes dans des milieux variables (BRWE).
+	L'objet de ce travail est de calculer certaines grandeurs moyennes ($\Phi$ le flux carré moyen, $\sigma$ le coefficient de diffusion) ainsi que des profils asymptotiques pour le modèle des piles abéliennes sur une certaine classe de graphes donnés. Chaque graphe étant caractérisé par la fonction de pondération $\varphi$ qui lui est associée. Il est à noter que le modèle ainsi étudié est très proche des modèles des marches aléatoires embranchantes dans des milieux variables (BRWE).
 	
 	Dhar dans \cite{DHARBIS} calcule grâce à de l'analyse complexe, de l'analyse numérique et avec l'aide de propriétés de symétrie, le flux carré moyen $\Phi$ associé à $\varphi(\delta,t)=1/3\mathds{1}(\delta)_{\{-1,0,1\}}$.    
 	
@@ -208,7 +208,8 @@ On définit la série génératrice $\tilde{p}(\Theta, t) = \sum_{x\in \mathbb{Z
 \end{lemma}
 
 \begin{lemma}
-	Notons $\mathds{P}(s_x)$, la probabilité $\mathds{P}(A(x,t) = 1)$. En supposant que $p\leq 1$ (par exemple la quantité de grains totales $s(t)$ qui peuvent être communiqués par chaque sommet de la ligne $t-1$ est croissante en $t$), la loi conjointe est à un instant $t$
+	%Notons $\mathds{P}(s_x)$, la probabilité $\mathds{P}(A(x,t) = 1)$. En supposant que $p\leq 1$ (par exemple la quantité de grains totales $s(t)$ qui peuvent être communiqués par chaque sommet de la ligne $t-1$ est croissante en $t$), la loi conjointe est à un instant $t$
+	Notons $p(s_x\cap s_y)$ la probabilité qu'il y ait un effondrement en $x$ et en $y$ à l'instant $t$, on a
 \begin{align*}
 	\forall x, y\in \mathbb{Z}^d, t\in\mathbb{N}^*, x\neq y, \\p(s_x \cap s_y) &= \sum_{(\delta_1,\delta_2)\in (\mathbb{Z}^d)^2} p(s_x-(\delta_1, 1) \cap s_y-(\delta_2,1))\varphi(\delta_1,t-1)\varphi(\delta_2,t-1)\label{1}\tag{1}
 \end{align*} 
@@ -525,7 +526,7 @@ où $f$ est une fonction $\mu_t$-intégrale quelconque. On définit $\mathfrak{s
 \begin{lemma}
 	On note $p(x,t) = p(t)(x)$ et  $A(0)$ est le profil initial de l'avalanche en $t=0$, on a alors $p(t)(x) = \Phi(A(0))(t)(x)$ pour $t\geq 1$, en posant pour $t\geq 1$
 	\begin{align*}
-		g_t(y) = \sum_{\delta \in \mathcal{E}}\varphi(t-1,\delta)\delta'(y-\delta)
+		g_t(y) = \sum_{\delta \in \mathbb{Z}}\varphi(t-1,\delta)\delta'(y-\delta)
 	\end{align*}
 
 	où $\delta'$ est compris comme la limite de la suite des dérivées d'une famille naissante de Dirac. 
@@ -535,8 +536,8 @@ où $f$ est une fonction $\mu_t$-intégrale quelconque. On définit $\mathfrak{s
 			\mathfrak{s}_t(p(t-1))(x) &= \int_{y\in\mathbb{R}}\mathrm{d}\mu_t(y)p(t-1)(x-y)\\
 						  &= \int_{y\in\mathbb{R}} g_t(y)p(t-1)(x-y)\mathrm{d}y\\
 						  &= \int_{y\in\mathbb{R}} \bigg [\sum_{d\in \mathcal{E}}\delta'(y-d)\varphi(t-1,d)\bigg]p(t-1)(x-y)\mathrm{d}y\\
-						  &= \sum_{d\in\mathcal{E}}\varphi(t-1,d) \int_{y\in\mathbb{R}}\delta'(y-d) p(t-1)(x-y)\mathrm{d}y\\
-						  &= \sum_{d\in\mathcal{E}}\varphi(t-1,d) p(t-1)(x-d) \\
+						  &= \sum_{d\in\mathbb{Z}}\varphi(t-1,d) \int_{y\in\mathbb{R}}\delta'(y-d) p(t-1)(x-y)\mathrm{d}y\\
+						  &= \sum_{d\in\mathbb{Z}}\varphi(t-1,d) p(t-1)(x-d) \\
 						  &= p(t)(x)
 		\end{align*}
 
@@ -579,7 +580,7 @@ où $f$ est une fonction $\mu_t$-intégrale quelconque. On définit $\mathfrak{s
 
 		Dans le cas précédent, on a $\tilde{p}(\theta, 0) = \sum_{x\in\mathbb{R}}e^{ix \theta}p(x,0)$, ainsi pour passer d'une transforation de Fourier discrète à une transformation de Fourier continue, on remplace $p(0)(x)$ dans $\tilde{p}(\theta, 0) = \int p(0)(x)e^{ix\theta}\mathrm{d}x$ par $p(x,0)g_0(x)$ avec $g_0(x) = \sum_{d}\delta'(x-d)p(d,0)$. Soit $(y_1,\ldots,y_t)$ un chemin, on a dans ce cas
 		\begin{align*}
-		\mathcal{P}(y) = \prod_{j=1}^t g_j(y_j) = \mathds{1}_{\mathcal{E}^t}(y) \prod_{j=1}^t \varphi_{j-1,y_j}
+			\mathcal{P}(y) = \prod_{j=1}^t g_j(y_j) = \prod_{j=1}^t \varphi(j-1,y_j)
 		\end{align*}
 
 		Et l'on retrouve le résultat les lemmes 1.2 et 1.3.
@@ -605,7 +606,7 @@ Puis,
 %	\Phi_k(t) = \mathds{E}\bigg(\sum_{x\in \mathbb{Z}} A(s_x)\bigg)^k = \sum_{X=(x_1,\ldots,x_k)\in\mathbb{Z}^k}\mathds{P}(s_{x_1}\cap \ldots \cap s_{x_k})
 %\end{align*}
 
-Définissons la variable de temps de relaxation, $T = \inf\{t\in \mathbb{N} : \cap_{x\in \mathbb{Z}} [A(s_x) = 0]\}$, étant donné une configuration $\omega$, $T(\omega)$ est le temps d'effondrement. On a  
+Définissons la variable de temps de relaxation, $T = \inf\{t\in \mathbb{N} : \cap_{x\in \mathbb{Z}} [A(s_x) = 0]\}$, étant donné une configuration $\omega$, $T(\omega)$ est le temps d'effondrement.   
 \begin{theorem}
 
 Dans le cas où $\varphi$ est indépendante de $t$, d'après \cite{1T1}, pour une certaine constante $C$ connue dépendante de $\varphi$, on a
