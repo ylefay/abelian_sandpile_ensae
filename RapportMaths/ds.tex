@@ -48,7 +48,7 @@
 	%Le lecteur soucieux davoir une connaissance  des marches aléatoires embranchantes dans les milieux variables
 	\keywords{marche aléatoire embranchante dans des milieux variables (BRWE),  équation de diffusion, équation de Chapman-Kolmogorov, chaînes de Markov, équations diophantiennes, théorème centrale-limite, intégrale de chemin}
 \end{abstract}
-\newpage 
+
 \section{Modèle sur $\mathbb{Z}^d$ : définitions et résultats préliminaires}
 \subsection{Définition de la dynamique du modèle}
 Un sommet du graphe est de la forme $(x,t)\in \mathcal{S} = \mathbb{Z}^d\times \mathbb{N}$. Une application de pondération est une application notée $\varphi : \mathcal{S}\mapsto \mathbb{R}^+$. Considérons le graphe associé 
@@ -61,20 +61,20 @@ Une configuration sur $\mathcal{G}$ est une application $\omega : \mathbb{Z}^d\t
 	\forall x\in\mathbb{Z}^d, \omega(x,t)<\sigma_t = \sum_{\delta\in \mathbb{Z}^d}\varphi(\delta,t)
 \end{align*}
 
-Etant donné une configuration $\omega$ quelconque, on pose pour tout $t\geq 1$, $\omega_t = \omega(.,t)$, $\tau(\omega_t) = \prod_{x\in \mathbb{Z}^d} T_{(x,t-1)} (\omega_t)$, où $T_s$ l'opérateur de \textit{toppling} (pour utiliser la terminologie des piles abéliennes) du site $s$, c'est-à-dire, celui qui fait effondrer $s$ sur ses voisins, $\{s+(\delta, 1)\}_{\delta}$ selon les quantités $\varphi(\delta,t)$. On s'intéresse à l'événement «$s$ s'effondre». On définit les variables suivantes
+Etant donné une configuration $\omega$ quelconque, on pose pour tout $t\geq 1$, $\omega_t = \omega(.,t)$, $\tau(\omega_t) = \prod_{x\in \mathbb{Z}^d} T_{(x,t-1)} (\omega_t)$, où $T_s$ l'opérateur de \textit{toppling} (pour utiliser la terminologie des piles abéliennes) du site $s$, c'est-à-dire, celui qui fait effondrer $s$ sur ses voisins, $\{s+(\delta, 1)\}_{\delta}$ selon les quantités $\varphi(\delta,t)$. On s'intéresse à la quantité moyenne qui s'effondre en $s$. On définit la variable suivante
 
 \begin{align*}
-	A : s = (x,t)\in\mathcal{S} \mapsto \mathds{1}\{x\textup{ s'effondre à l'instant } t\}\\
+	%A : s = (x,t)\in\mathcal{S} \mapsto \mathds{1}\{x\textup{ s'effondre à l'instant } t\}\\
 	X : s \mapsto \textup{ Qté de grains qui s'effondre sur } s\\
-	H : s \mapsto \textup{ Qté de grains en } s \textup{ après effondrement }
+	%H : s \mapsto \textup{ Qté de grains en } s \textup{ après effondrement }
 \end{align*}
 
 Le modèle des piles abéliennes est
 \begin{align*}
-	\forall s\in\mathcal{S}^* = \mathcal{S}\backslash\{(x,0) : x\in\mathbb{Z}^d\}, \\
-	& X(s) = \sum_{\delta\in\mathbb{Z}^d} A(s-(\delta, 1))\varphi(\delta, t-1)\\
-	& H(s) = \omega_t(x) + X(s)\\
-	&A(s) = \mathds{1}\{H(s) \geq \sigma_t\}
+	\forall s\in\mathcal{S}^* = \mathcal{S}\backslash\{(x,0) : x\in\mathbb{Z}^d\},\, 
+	X(s) = \sum_{\delta\in\mathbb{Z}^d} X(s-(\delta, 1))\varphi(\delta, t-1)\\
+	%& H(s) = \omega_t(x) + X(s)\\
+	%&A(s) = \mathds{1}\{H(s) \geq \sigma_t\}
 % \min\{1, \lfloor H(s)/s(t)\rfloor\}
 \end{align*}
 \begin{exmp}
@@ -111,56 +111,53 @@ On note $p:s\in\mathcal{S}\mapsto \mathbb{E}(X(s))$, la quantité (normalisée) 
 %\end{align*}
 
 
-De la relation de récurrence précédente, on obtient une relation identique à celle d'une marche aléatoire partant de $(0,0)$ avec des pas de déplacements $(\delta, +1)$ de poids $\varphi(\delta, t)$ donnée par le théorème suivant
+De la relation de récurrence précédente, on obtient une relation identique à celle d'une marche aléatoire embranchante partant de $(0,0)$ avec des pas de déplacements $(\delta, +1)$ de poids $\varphi(\delta, t)$ donnée par le théorème suivant
 \begin{theorem}
-
 	La quantité moyenne de grains qui se transmettent au sommet $s$ normalisée est donnée par
 	\begin{align*}
 	\forall s\in\mathcal{S}^*,\,\,\, p(s) = \sum_{\delta\in \mathbb{Z}^d}p(s-(\delta,1))\varphi(\delta,t-1)\end{align*} 
-	\begin{proof}
-		Soit $\omega \in\Omega_0$, notons \begin{align*}
-		\mathcal{A}_t = \{x \in \mathbb{Z}^d : x \textup{ est accessible depuis } 0 \textup{ en un temps } t \textup{ avec des déplacements admissibles}\}\end{align*}
+%	\begin{proof}
+		%Soit $\omega \in\Omega_0$, notons \begin{align*}
+		%\mathcal{A}_t = \{x \in \mathbb{Z}^d : x \textup{ est accessible depuis } 0 \textup{ en un temps } t \textup{ avec des déplacements admissibles}\}\end{align*}
 		
-		Soit $x\in\mathbb{Z}^d$, on se donne une bijection $i : \mathcal{A}_{t-1} \to \llbracket 1;|\mathcal{A}_{t-1}|\rrbracket$ pour énumérer $\mathcal{A}_{t-1}$ et on définit
-		\begin{align*}\forall j\in\llbracket 0;|\mathcal{A}_{t-1}|\rrbracket, \omega_{j,t} = 
-			\left \{
-\begin{array}{c @{} c}
-	\omega_{t} \,\,\,\, \textup{si }j=0 \\
-	T_{(i^{-1}(j),t-1)}(\omega_{j-1,t}) \,\,\,\, \textup{si }j\geq 1\\
-\end{array}
-\right.\end{align*}
+		%Soit $x\in\mathbb{Z}^d$, on se donne une bijection $i : \mathcal{A}_{t-1} \to \llbracket 1;|\mathcal{A}_{t-1}|\rrbracket$ pour énumérer $\mathcal{A}_{t-1}$ et on définit
+		%\begin{align*}\forall j\in\llbracket 0;|\mathcal{A}_{t-1}|\rrbracket, \omega_{j,t} = 
+		%	\left \{
+%\begin{array}{c @{} c}
+%	\omega_{t} \,\,\,\, \textup{si }j=0 \\
+%	T_{(i^{-1}(j),t-1)}(\omega_{j-1,t}) \,\,\,\, \textup{si }j\geq 1\\
+%\end{array}
+%\right.\end{align*}
 
-Soit $x\in\mathbb{Z}^d$, on décompose l'application de l'opérateur de toppling $\tau$ sur $\omega_{t}$ par les états successifs $(\omega_{j,t})_j$, ainsi l'ordre d'un produit de topplings est selon l'énumération $i$, posons $A_0 = \varnothing$ et $A_k = \{\omega : (\prod_{y\in\mathcal{A}_{t-1} : i(y)\leq k}){T_{(y,t-1)}}(\omega_{t})(x)\geq \sigma_t\}$, alors $A_k$ est l'ensemble des configurations dont l'effondrement sur $x$ des $k$ premiers-sites $y$ (selon l'énumération $i$) fait de $x$ un site instable en $t$. Nous avons
-	\begin{align*}
-		\{\omega : x\textup{ s'effondre à l'instant } t\} &= \{\omega : \tau(\omega_t)(x)\geq \sigma_t\}\\
-								  &=\{\omega : (\prod_{y\in \mathcal{A}_{t-1}} T_{(y,t-1)})(\omega_{t})(x)\geq \sigma_t\}\\
-						   %&= \{\omega : (\prod_{y\in\mathcal{A}_{t-1} \cap \mathcal{S}^{-1}(x)}T_{(y,t-1)})(\omega_{t})(x)\geq \sigma_t\}\\
-						    &= \bigsqcup_{k=1}^{|\mathcal{A}_{t-1}|}A_k\backslash A_{k-1}
+%Soit $x\in\mathbb{Z}^d$, on décompose l'application de l'opérateur de toppling $\tau$ sur $\omega_{t}$ par les états successifs $(\omega_{j,t})_j$, ainsi l'ordre d'un produit de topplings est selon l'énumération $i$, posons $A_0 = \varnothing$ et $A_k = \{\omega : (\prod_{y\in\mathcal{A}_{t-1} : i(y)\leq k}){T_{(y,t-1)}}(\omega_{t})(x)\geq \sigma_t\}$, alors $A_k$ est l'ensemble des configurations dont l'effondrement sur $x$ des $k$ premiers-sites $y$ (selon l'énumération $i$) fait de $x$ un site instable en $t$. Nous avons
+%	\begin{align*}
+%		\{\omega : x\textup{ s'effondre à l'instant } t\} &= \{\omega : \tau(\omega_t)(x)\geq \sigma_t\}\\
+%								  &=\{\omega : (\prod_{y\in \mathcal{A}_{t-1}} T_{(y,t-1)})(\omega_{t})(x)\geq \sigma_t\}\\
+%						   %&= \{\omega : (\prod_{y\in\mathcal{A}_{t-1} \cap \mathcal{S}^{-1}(x)}T_{(y,t-1)})(\omega_{t})(x)\geq \sigma_t\}\\
+%						    &= \bigsqcup_{k=1}^{|\mathcal{A}_{t-1}|}A_k\backslash A_{k-1}
 						   %= \bigsqcup_{k=1}^{|\mathcal{A}_{t-1}|}A_k\backslash A_{k-1}  
-						 \end{align*}
-						 La première égalité s'obtient par définition de $(x,t)$ instable, la seconde égalité est justifiée car seuls les sites $y\in\mathcal{A}_{t-1}$ s'effondre à l'instant $t-1$.
+%						 \end{align*}
+%						 La première égalité s'obtient par définition de $(x,t)$ instable, la seconde égalité est justifiée car seuls les sites $y\in\mathcal{A}_{t-1}$ s'effondre à l'instant $t-1$.
+%
+%
+%						 Et $A_k\backslash A_{k-1} = \{\omega : \omega_{t}(x)+\sum_{j<k}\varphi(x-i^{-1}(j), t-1)<\sigma_t, \omega_{t}(x)+\sum_{j\leq k}\varphi(x-i^{-1}(j), t-1)\geq \sigma_t\}$, cela car les $k-1$ premiers effondrements ne rendent pas $(x,t)$ instable mais les $k$ premiers, si. Les quantités $\omega_{t}(x)$ étant distribuées uniformément, on a que pour tout $k \in \llbracket1;|\mathcal{A}_{t-1}|\rrbracket$, la contribution moyenne au site $(x,t)$ du $k$-ème effondrements sachant que $(x,t)$ n'est pas instable après les $k-1$ premiers est  
 
-
-						 Et $A_k\backslash A_{k-1} = \{\omega : \omega_{t}(x)+\sum_{j<k}\varphi(x-i^{-1}(j), t-1)<\sigma_t, \omega_{t}(x)+\sum_{j\leq k}\varphi(x-i^{-1}(j), t-1)\geq \sigma_t\}$, cela car les $k-1$ premiers effondrements ne rendent pas $(x,t)$ instable mais les $k$ premiers, si. Les quantités $\omega_{t}(x)$ étant distribuées uniformément, on a que pour tout $k \in \llbracket1;|\mathcal{A}_{t-1}|\rrbracket$, la contribution moyenne au site $(x,t)$ du $k$-ème effondrements sachant que $(x,t)$ n'est pas instable après les $k-1$ premiers est  
-
-						 \begin{align*}p(i^{-1}(k),t-1)\varphi(x-i^{-1}(k))\end{align*}
-					 
+%						 \begin{align*}p(i^{-1}(k),t-1)\varphi(x-i^{-1}(k))\end{align*}
+%					 
 						 %Pour le voir, on peut poser pour tout $I\subset \mathbb{Z}^d$, $X_I = \bigcap_{i\in I} \{\omega : A(i,t-1)=1\} \bigcap_{i\notin I}\{\omega : A(i,t-1)=0\}\cap \{\omega : A(i^{-1}(k),t-1)=1\}$. La formule des probabilités totales donne que $\mathbb{P}(A_k\backslash A_{k-1}) = \sum_{I\subset \mathbb{Z}^d}\mathbb{P}(A_k\backslash A_{k-1}|X_I)\mathbb{P}(X_I)$. Comme les quantités $\omega_t(x)$ sont distribuées uniformément, on a $\mathbb{P}(A_{k}\backslash A_{k-1}|X_I)=\varphi(x-i^{-1}(k),t-1)$. De plus, $\sum_{I\subset \mathbb{Z}^d}\mathbb{P}(X_I) = p(\sqcup_{I\subset \mathcal{E}^{-1}(x)} X_I) = p(A(i^{-1}(k),t-1)=1) = p(i^{-1}(k),t-1)$. Ainsi,
-						En sommant toutes les contributions, on obtient
-
-						 \begin{align*}
-							 p(x,t) = \sum_{y\in \mathbb{Z}^d}p(y, t-1)\varphi(x-y,t-1) = \sum_{\delta\in \mathbb{Z}^d}p(s-(\delta, 1))\varphi(\delta, t-1)
-						 \end{align*}
+%						En sommant toutes les contributions, on obtient
+%
+%						 \begin{align*}
+%							 p(x,t) = \sum_{y\in \mathbb{Z}^d}p(y, t-1)\varphi(x-y,t-1) = \sum_{\delta\in \mathbb{Z}^d}p(s-(\delta, 1))\varphi(\delta, t-1)
+%						 \end{align*}
 						 %On a en plus montré que $\mathds{E}(A(s)) = \min\{1, p(s)\}$.
 	
 	%					 Cette démonstration est quelque peu fastidieuse mais l'idée principale est celle qu'on retrouve dans la démonstration que les opérateurs de topplings commutent. 
-					 \end{proof}
+%					 \end{proof}
+		%Evident.
 \end{theorem}
-On définit la série génératrice $\tilde{p}(\Theta, t) = \sum_{x\in \mathbb{Z}^d}p(x,t)e^{i x.\Theta}$ et posons $\mathcal{L}(t,\Theta)= \sum_{\delta\in \mathbb{Z}^d} e^{i\delta.\Theta}\varphi(\delta,t-1)$. Nous obtenons 
-\begin{align*}
-	\tilde{p}(\Theta, t) = \tilde{p}(\Theta, t-1)\mathcal{L}(t,\Theta)
-\end{align*}
-
+On définit la série génératrice $\tilde{p}(\Theta, t) = \sum_{x\in \mathbb{Z}^d}p(x,t)e^{i x.\Theta}$ et posons $\mathcal{L}(t,\Theta)= \sum_{\delta\in \mathbb{Z}^d} e^{i\delta.\Theta}\varphi(\delta,t-1)$, de manière à avoir 
+$\tilde{p}(\Theta, t) = \tilde{p}(\Theta, t-1)\mathcal{L}(t,\Theta)$.
 \begin{exmp}
 	L'exemple du graphe précédent donne 
 	\begin{align*}
@@ -175,11 +172,13 @@ On définit la série génératrice $\tilde{p}(\Theta, t) = \sum_{x\in \mathbb{Z
 	où $\Delta = (\delta_i) : (E)$ est la condition $\sum_{i=0}^{t-1}\delta_{i} = x$ et $\Psi(\Delta) = \prod_{i=0}^{t-1}\varphi(\delta_i,i)$.
 	\begin{proof}
 		Par hypothèse, l'effondrement initial a lieu en $(0,0)$ ainsi $\tilde{p}(\Theta, 0) = 1$. D'après le résultat qui précède, 
-		\begin{align*} \tilde{p}(\Theta, t) = \prod_{i=1}^{t}\mathcal{L}(i,\theta) = \sum_{\Delta\in (\mathbb{Z}^d)^{t}} e^{i\Theta.\sum_{i=0}^{t-1} \delta_i}\Psi(\Delta)\end{align*}
-			et en appliquant la transformée de Fourier inverse, 
-			\begin{align*}
-				p(s) &= \frac{1}{(2\pi)^d}\int_{\Theta\in [0,2\pi]^d} e^{-i\Theta.x} \tilde{p}(\Theta, t)\mathrm{d}\Theta = \sum_{\Delta \in (\mathbb{Z}^d)^t} \mathds{1}_{(E)}(\Delta)\Psi(\Delta)
-		\end{align*} 
+		\begin{align*} \tilde{p}(\Theta, t) = %\prod_{i=1}^{t}\mathcal{L}(i,\theta) =
+		\sum_{\Delta\in (\mathbb{Z}^d)^{t}} e^{i\Theta.\sum_{i=0}^{t-1} \delta_i}\Psi(\Delta)\end{align*}
+			%et en appliquant la transformée de Fourier inverse, 
+			%\begin{align*}
+			%	p(s) &%= \frac{1}{(2\pi)^d}\int_{\Theta\in [0,2\pi]^d} e^{-i\Theta.x} \tilde{p}(\Theta, t)\mathrm{d}\Theta
+			%	= \sum_{\Delta \in (\mathbb{Z}^d)^t} \mathds{1}_{(E)}(\Delta)\Psi(\Delta)
+		%\end{align*} 
 	\end{proof}\end{lemma}
 	Dans le cas particulier où la quantité $\varphi=C\mathds{1}_E$, le lemme précédent dit que $p(s) = C^t\textup{Card}\{(\delta_i)\in (E^d)^t : \sum_{i=0}^{t-1}\delta_i=x\}$. %En se restreignant à $d=1$ et au cas où $\varphi^*$ est constante, nous avons le lemme suivant,
 	%\begin{lemma}
@@ -214,7 +213,7 @@ On définit la série génératrice $\tilde{p}(\Theta, t) = \sum_{x\in \mathbb{Z
 	\forall x, y\in \mathbb{Z}^d, t\in\mathbb{N}^*, x\neq y, \\p(s_x \cap s_y) &= \sum_{(\delta_1,\delta_2)\in (\mathbb{Z}^d)^2} p(s_x-(\delta_1, 1) \cap s_y-(\delta_2,1))\varphi(\delta_1,t-1)\varphi(\delta_2,t-1)\label{1}\tag{1}
 \end{align*} 
 Et initialement, $p((x,0)\cap (y,0)) = A(x,0)A(y,0)$. \begin{proof}
-	Comme $p\leq 1$, on sait que $X$ et $A$ coïncident en loi. 
+	%Comme $p\leq 1$, on sait que $X$ et $A$ coïncident en loi. 
 	La démonstration est semblable à celle du premier lemme et on obtient pour un effondrement initial en $(0,0)$, $\tilde{p}(\Theta_1, \Theta_2, t)=\sum_{(\Delta_1,\Delta_2)\in (\mathbb{Z}^d)^t\times(\mathbb{Z}^d)^t} e^{i(\Theta_1.s(\Delta_1)+\Theta_2.s(\Delta_2))} \Psi(\Delta_1)\Psi(\Delta_2)$ où l'on note $s(\Delta) = \sum_{\delta\in \Delta}\delta$ et cela se généralise facilement.
 \end{proof}
 \end{lemma}
@@ -326,7 +325,7 @@ Avec la condition initiale, $p((x,t')|(x',t')) = \delta_{x, x'}$.
 		X(t) \underset{t\to \infty}{\overset{\mathcal{L}}{\to}} \mathcal{N}(\mu t, \sigma(t)^2 = \frac{1}{3}tn(n+1))
 	\end{align*}
 	\begin{proof}
-		Nous pouvons supposer que $\varphi(x,t)_{\llbracket -n,n\rrbracket}$, le théorème précédent nous dit que si $A(t)$ suit une loi normale de variance $\sigma^2(t)$ alors nécessairement 
+		Nous pouvons supposer que $\varphi(x,t)=\mathds{1}(x)_{\llbracket -n,n\rrbracket}$, le théorème précédent nous dit que si $A(t)$ suit une loi normale de variance $\sigma^2(t)$ alors nécessairement 
 	\begin{align*}
 		\mu = C_1(t) = 0 \indent C_2(t) = \sigma^2(t)  = \frac{n(n+1)t}{3}
 	\end{align*}
@@ -368,7 +367,7 @@ Avec la condition initiale, $p((x,t')|(x',t')) = \delta_{x, x'}$.
 \section{Flux carré moyen}
 Le flux carré moyen $\Phi$ est défini par 
 \begin{align*}
-	\forall t, \Phi(t) = \mathbb{E}\bigg(\sum_{x\in\mathbb{Z}^d}A(s_x)\bigg)^2 
+	\forall t, \Phi(t) = \mathbb{E}\bigg(\sum_{x\in\mathbb{Z}^d}X(s_x)\bigg)^2 
 	%= \sum_{(x,y)\in\mathbb{Z}^d\times\mathbb{Z}^d}p(s_x\cap s_y)
 \end{align*}
 
@@ -380,7 +379,7 @@ Le flux carré moyen $\Phi$ est défini par
 	\end{align*}
 	où $\gamma$ est défini dans la démonstration.
 	\begin{proof}
-		Comme $\varphi$ ne dépend pas de $t$, on a que $X$ et $A$ coïncident en loi puis \begin{align*}
+		On a \begin{align*}
 			\Phi(t) = \sum_{(x,y)\in\mathbb{Z}^d\times\mathbb{Z}^d} p(s_x \cap s_y)
 		\end{align*}
 
@@ -606,7 +605,7 @@ Puis,
 %	\Phi_k(t) = \mathds{E}\bigg(\sum_{x\in \mathbb{Z}} A(s_x)\bigg)^k = \sum_{X=(x_1,\ldots,x_k)\in\mathbb{Z}^k}\mathds{P}(s_{x_1}\cap \ldots \cap s_{x_k})
 %\end{align*}
 
-Définissons la variable de temps de relaxation, $T = \inf\{t\in \mathbb{N} : \cap_{x\in \mathbb{Z}} [A(s_x) = 0]\}$, étant donné une configuration $\omega$, $T(\omega)$ est le temps d'effondrement.   
+Définissons la variable de temps de relaxation, $T = \inf\{t\in \mathbb{N} : \cap_{x\in \mathbb{Z}} [X(s_x) = 0]\}$, étant donné une configuration $\omega$, $T(\omega)$ est le temps d'effondrement.   
 \begin{theorem}
 
 Dans le cas où $\varphi$ est indépendante de $t$, d'après \cite{1T1}, pour une certaine constante $C$ connue dépendante de $\varphi$, on a
@@ -626,7 +625,7 @@ Dans le cas où $\varphi$ est indépendante de $t$, d'après \cite{1T1}, pour un
 \section{Conjecture sur les flux d'ordre supérieur}
 On définit le flux d'ordre $k$ pour $k\geq 1$ par 
 \begin{align*}
-	\Phi_k(t) = \mathds{E}\bigg(\sum_{x\in\mathbb{Z}} A(s_x)\bigg)^k = \sum_{X=(x_1,\ldots,x_k)\in\mathbb{Z}^k}\mathds{P}(s_{x_1}\cap\ldots\caps_{x_k})
+	\Phi_k(t) = \mathds{E}\bigg(\sum_{x\in\mathbb{Z}} X(s_x)\bigg)^k = \sum_{X=(x_1,\ldots,x_k)\in\mathbb{Z}^k}\mathds{P}(s_{x_1}\cap\ldots\cap s_{x_k})
 \end{align*}
 
 En reprenant le calcul de $\Phi_2$, on pose par analogie $K_k(t) = \sum_{x\in\mathbb{Z}}p(x,t)^k$. La conjecture (motivée par des résultats numériques) que nous faisons est que
