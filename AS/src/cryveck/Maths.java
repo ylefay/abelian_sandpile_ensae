@@ -16,14 +16,4 @@ public class Maths {
 		return result;
 	}
 	
-	public static int max(int[] configuration) {
-		int max = 0;
-		for (int i = 0; i<configuration.length; i++) {
-			if(configuration[i]>max) {
-				max = configuration[i];
-			}
-		}
-		return max;
-	}
-	
 }
