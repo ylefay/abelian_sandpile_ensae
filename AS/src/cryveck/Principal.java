@@ -1,5 +1,6 @@
 package cryveck;
 
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Random;
@@ -15,7 +16,7 @@ public class Principal {
 	// renvoie Id (i.e la fonction
 	// getColor)
 	public static final boolean DEMANDE_GO = false; 
-	public static final int N = 50;
+	public static final int N = 80;
 	public static final int M = 400;
 
 	public static Rendu rendu = new Rendu(MAX_SIZE_LIST_IMAGE_BEFORE_PROCESS, SAVE_IMAGE_PIXEL_SIZE, cp);
@@ -38,14 +39,14 @@ public class Principal {
 
 		rendu.setColorRange(3, 0);// Definition de l'intervalle pour le calcul des couleurs, a choisir plus grand que le flux sortant max
 		
-		Hashtable<Integer, Integer> resultat = histogramme3(10000, M,N);
-		Set<Integer> keys = resultat.keySet();
-		for (int j : keys) {
-			System.out.print("{"+ j + ", "+resultat.get(j)+"/10000}, ");			//rendu pour mathematica
-		}
+		//Hashtable<Integer, Integer> resultat = histogramme3(10000, M,N);
+		//Set<Integer> keys = resultat.keySet();
+		//for (int j : keys) {
+		//	System.out.print("{"+ j + ", "+resultat.get(j)+"/10000}, ");			//rendu pour mathematica
+		//}
 		
-		//float[] f = fluxcarremoyen3neighbours(10000, 100, 1000);
-		//for (int i = 0; i<=1000; i++) {
+		//float[] f = fluxcarremoyen3neighbours(50000, 200, 50);
+		//for (int i = 0; i<=50; i++) {
 		//	System.out.print("{" + i + ", "+f[i]+"}, ");
 		//}
 
@@ -56,11 +57,11 @@ public class Principal {
 		//}
 		
 		//Calcul et rendu des identites sur graphecercle pour r variant entre 0.5 et 3
-		//for (int k=0; k<6; k++) {
-		//	Hashtable <Integer, ArrayList<Integer>> gP = Graphes.grapheCercle(N/2-1, Graphes.grapheFeuille(N), (k+1)*0.5);
-		//	int[] configuration = calculIdentiteDict(gP, false, false);
-		//	rendu.save(PREFIXE + "--" + String.format("%03d", k), configuration, N, N);
-		//}
+		for (int k=0; k<10; k++) {
+			Hashtable <Integer, ArrayList<Integer>> gP = Graphes.grapheCercle(N/2-1, Graphes.grapheFeuille(N), 0.5+2.5/9*k);
+			int[] configuration = calculIdentiteDict(gP, false, false);
+			rendu.save(PREFIXE + "--" + k + String.format("%03d", 3), configuration, N, N);
+		}
 		
 		//Calcul et rendu de la matrice sur un graphe quelconque
 		//Hashtable <Integer, ArrayList<Integer>> gP = Graphes.grapheFeuille(N); //Definition du graphe
@@ -72,7 +73,7 @@ public class Principal {
 		//rendu.save(PREFIXE + "--" + String.format("%03d", 0), configuration, N,N);
 		
 		//Calcul et rendu de la matrice identite sur le graphe grille
-		//int[] configuration = calculIdentiteDictOGF(N, false);
+		//int[] configuration = calculIdentiteDictOGF(N, true);
 		//rendu.save(PREFIXE + "--" + String.format("%03d", 0), configuration, N, N);
 
 		//Hashtable <Integer, ArrayList<Integer>> gP = Graphes.grapheFeuille(N);
@@ -93,7 +94,7 @@ public class Principal {
 			configuration[N/2+1] = 3; //max + 1
 			ArrayList<Integer> si = sitesInstablesDictDN(lap, configuration, 0, N, 3);
 			int k = 0;
-			while (si.size()>0 && k<M) {
+			while (!si.isEmpty() && k<M) {
 				k+=1;
 				unStabDict(gP, configuration, lap, true, 3, si);
 				si = sitesInstablesDictDN(lap, configuration, k, N, 3);
@@ -119,31 +120,31 @@ public class Principal {
 	//renvoie une configuration constante C
 	public static int[] configurationComplete(int lg, int C) { 
 		int[] configuration = new int[lg + 1];
-		for (int i = 1; i < lg + 1; i++)
-			configuration[i] = C;
+		Arrays.fill(configuration, C);
 		return configuration;
 	}
-
+	
+	
 	//renvoie la Laplacienne sous la forme d'une Hashtable (dictionnaire) (evite le stockage de 0.., tres utile en complexite spatiale)
 	public static Hashtable<Integer, Hashtable<Integer, Integer>> laplacienneDict(
 			Hashtable<Integer, ArrayList<Integer>> graphe, int n) { 
 		Hashtable<Integer, Hashtable<Integer, Integer>> M = new Hashtable<Integer, Hashtable<Integer, Integer>>();
-		for (int i = 0; i < n; i++)
-			if (graphe.containsKey(i)) {
-				if (M.get(i) == null)
+		Set<Integer> keys = graphe.keySet();
+		for (int i : keys) { 
+			if (M.get(i) == null)
+				M.put(i, new Hashtable<Integer, Integer>());
+			M.get(i).put(i, graphe.get(i).size());
+			for (int j : graphe.get(i))
+				if (M.get(i) == null) {
 					M.put(i, new Hashtable<Integer, Integer>());
-				M.get(i).put(i, graphe.get(i).size());
-				for (int j : graphe.get(i))
-					if (M.get(i) == null) {
-						M.put(i, new Hashtable<Integer, Integer>());
-						M.get(i).put(i, -1);
-					} else {
-						if (M.get(i).containsKey(j))
-							M.get(i).put(j, M.get(i).get(j) - 1);
-						else
-							M.get(i).put(j, -1);
-					}
-			}
+					M.get(i).put(i, -1);
+				} else {
+					if (M.get(i).containsKey(j))
+						M.get(i).put(j, M.get(i).get(j) - 1);
+					else
+						M.get(i).put(j, -1);
+				}
+		}
 		return M;
 	}
 
@@ -197,7 +198,7 @@ public class Principal {
 		int diag = lap.get(1).get(1);
 		ArrayList<Integer> si = sitesInstablesDict(lap, configuration, n, reguliereDiag, diag);
 		int k = 0;
-		while (si.size()>0) {
+		while (!si.isEmpty()) {
 			k+=1;
 			unStabDict(graphe, configuration, lap, reguliereDiag, diag, si);
 			si = sitesInstablesDict(lap, configuration, n, reguliereDiag, diag);
@@ -222,7 +223,7 @@ public class Principal {
 		rendu.save(PREFIXE + "-" + String.format("%05d", 0), configuration, w, h);
 		int diag = lap.get(1).get(1);
 		ArrayList<Integer> si = sitesInstablesDict(lap, configuration, n, reguliereDiag, diag);
-		while (si.size()>0) {
+		while (!si.isEmpty()) {
 			unStabDict(graphe, configuration, lap, reguliereDiag, diag, si);
 			si = sitesInstablesDict(lap, configuration, n, reguliereDiag, diag);
 			rendu.save(PREFIXE + "-" + String.format("%05d", r++), configuration, w, h);
@@ -240,11 +241,12 @@ public class Principal {
 			int configuration[] = configurationAleatoire(N*M+1, 2); //max
 			configuration[N/2 + 1] = 3; //destabilise la configuration
 			ArrayList<Integer> si = sitesInstablesDictDN(lap, configuration, 0, N, diag);
-			while (si.size()>0 & k < M) {
+			while (!si.isEmpty() & k < M) {
 				unStabDict(gP, configuration, lap, true, diag, si);
 				k++;
 				si = sitesInstablesDictDN(lap, configuration, k, N, diag);
-				resultat[k] += si.size()*si.size();
+				int _size = si.size();
+				resultat[k] += _size*_size;
 			}
 		}
 		for (int k = 0; k< M; k++) {
@@ -296,11 +298,11 @@ public class Principal {
 	//i.e chaque site est a sa hauteur maximale de stabilite (=flux sortant max de i -1) 
 	public static int[] configurationCritiqueDict(Hashtable<Integer, Hashtable<Integer, Integer>> lap, int lg) {
 		int[] configuration = new int[lg];
-		for (int i = 1; i < lg; i++)
-			if (lap.get(i) != null)
-				configuration[i] = lap.get(i).get(i) - 1;
-			else
-				configuration[i] = -1;
+		Arrays.fill(configuration, -1);
+		Set<Integer> keys = lap.keySet();
+		for (int i : keys) {
+			configuration[i] += lap.get(i).get(i);
+		}
 		return configuration;
 	}
 
@@ -355,17 +357,6 @@ public class Principal {
 	//renvoie les sites instables pour le graphe feuille i.e de hauteur >=4
 	public static ArrayList<Integer> sitesInstablesDictOGF(Hashtable<Integer, Hashtable<Integer, Integer>> lap,
 			int[] configuration, int n) {
-		ArrayList<Integer> J = new ArrayList<Integer>();
-
-		for (int i = 1; i < n; i++)
-			if (lap.get(i) != null) {
-				if (configuration[i] >= 4)
-					J.add(i);
-			} else {
-				if (configuration[i] >= 0)
-					J.add(i);
-			}
-
-		return J;
+		return sitesInstablesDict(lap, configuration, n, false, 4);
 	}
 }
