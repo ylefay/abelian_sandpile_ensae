@@ -1,4 +1,4 @@
-PWD /home/grothendieck/0
+PWD /home/grothendieck/AS/RapportMaths
 INPUT /usr/share/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
 INPUT ds.tex
@@ -242,10 +242,6 @@ INPUT /usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
 INPUT /usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
 INPUT /usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
 INPUT /usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
-INPUT /usr/share/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def
-INPUT /usr/share/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def
-INPUT /usr/share/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def
-INPUT /usr/share/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def
 INPUT /usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty
 INPUT /usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty
 INPUT /usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty
@@ -889,7 +885,6 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/doublestroke/dsrom8.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/doublestroke/dsrom8.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/doublestroke/dsrom8.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbi0900.tfm
-INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm1440.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx1440.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
@@ -912,9 +907,9 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/stmaryrd/stmary7.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm0700.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm0500.tfm
-INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecti1000.tfm
+INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm
-INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
+INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecti1000.tfm
 INPUT /usr/share/texmf-dist/tex/latex/amsfonts/ueuf.fd
 INPUT /usr/share/texmf-dist/tex/latex/amsfonts/ueuf.fd
 INPUT /usr/share/texmf-dist/tex/latex/amsfonts/ueuf.fd
@@ -929,7 +924,6 @@ INPUT ds.bbl
 INPUT ds.aux
 INPUT ./ds.out
 INPUT ./ds.out
-INPUT /usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT /usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb

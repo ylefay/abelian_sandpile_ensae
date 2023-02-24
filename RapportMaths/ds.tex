@@ -46,30 +46,29 @@
 	Dans une dernière partie, nous généralisons les équations régissant $p$ à des mesures quelconques puis à des temps continus. Des intégrales de chemins apparaissent.  
 	
 	%Le lecteur soucieux davoir une connaissance  des marches aléatoires embranchantes dans les milieux variables
-	\keywords{marche aléatoire embranchante dans des milieux variables (BRWE),  équation de diffusion, équation de Chapman-Kolmogorov, chaînes de Markov, équations diophantiennes, théorème centrale-limite, intégrale de chemin}
+	\keywords{marche aléatoire embranchante dans des milieux variables (BRWE),  équation de diffusion, équation de Chapman-Kolmogorov, chaînes de Markov, équations diophantiennes, théorème central limite, intégrale de chemin}
 \end{abstract}
 
 \section{Modèle sur $\mathbb{Z}^d$ : définitions et résultats préliminaires}
 \subsection{Définition de la dynamique du modèle}
-Un sommet du graphe est de la forme $(x,t)\in \mathcal{S} = \mathbb{Z}^d\times \mathbb{N}$. Une application de pondération est une application notée $\varphi : \mathcal{S}\mapsto \mathbb{R}^+$. Considérons le graphe associé 
-\begin{align*}
-	\mathcal{G}(\varphi) = (\mathcal{S}, \{(s,s+(\delta,1))_{\textup{de poids } \varphi(\delta,t)} : \delta\in \mathbb{Z}^d, s=(x,t)\in \mathcal{S}\})
-\end{align*}
+Un sommet du graphe, aussi appelé un site, est un élément $s=(x,t)\in \mathcal{S} = \mathbb{Z}^d\times \mathbb{N}$. Une application de pondération est une application partant de l'ensemble des sites vers les réels positifs, $\varphi : \mathcal{S}\mapsto \mathbb{R}^+$. L'ensemble des arêtes, noté $\mathcal{V}(\varphi)$ est défini par $\{(s, s+(\delta, 1))_{\textup{de poids } \varphi(\delta, t)} : \delta\in\mathbb{Z}^d, s\in \mathcal{S}\}$. Le graphe associé est noté $\mathcal{G}(\varphi) = (\mathcal{S}, \mathcal{V(\varphi)})$.
 
-Une configuration sur $\mathcal{G}$ est une application $\omega : \mathbb{Z}^d\times\mathbb{N}\to \mathbb{N}$ , celle-ci est dîtes stable à l'instant $t$ si
-\begin{align*}
-	\forall x\in\mathbb{Z}^d, \omega(x,t)<\sigma_t = \sum_{\delta\in \mathbb{Z}^d}\varphi(\delta,t)
-\end{align*}
+Une configuration sur $\mathcal{G}$ est une application $\omega : \mathcal{S}\to \mathbb{N}$. Une configuration est dîtes instable s'il existe un site $s$ tel que $\omega(s)\geq c_t = \sum_{\delta\in\mathbb{Z}^d} \varphi(\delta, t)$. 
 
-Etant donné une configuration $\omega$ quelconque, on pose pour tout $t\geq 1$, $\omega_t = \omega(.,t)$, $\tau(\omega_t) = \prod_{x\in \mathbb{Z}^d} T_{(x,t-1)} (\omega_t)$, où $T_s$ l'opérateur de \textit{toppling} (pour utiliser la terminologie des piles abéliennes) du site $s$, c'est-à-dire, celui qui fait effondrer $s$ sur ses voisins, $\{s+(\delta, 1)\}_{\delta}$ selon les quantités $\varphi(\delta,t)$. On s'intéresse à la quantité moyenne qui s'effondre en $s$. On définit la variable suivante
+Soit $\omega$ une configuration, soit $t\geq 0$, on note $\omega_t(x) = \omega(x, t)$ pour $x\in\mathbb{Z}^d$. 
+
+Soit $\omega_0$ une configuration initiale. On calcule de manière récursive les configurations successives $\omega_1, \omega_2, \ldots$ en faisant, à chaque instant $t$, effondrer tous les sites instables $s$ de la configuration $\omega_t$ sur ses voisins $\{s+(\delta, 1)\}_{\delta}$ selon les quantités $\{\varphi(\delta, t)\}_{\delta}$. 
+
+
+On définit la variable suivante
 
 \begin{align*}
 	%A : s = (x,t)\in\mathcal{S} \mapsto \mathds{1}\{x\textup{ s'effondre à l'instant } t\}\\
-	X : s \mapsto \textup{ Qté de grains qui s'effondre sur } s\\
+	X : s \mapsto \textup{ Qté de grains qui s'effondrent sur } s\\
 	%H : s \mapsto \textup{ Qté de grains en } s \textup{ après effondrement }
 \end{align*}
 
-Le modèle des piles abéliennes est
+D'après la dynamique précédente, on a l'équation récursive suivante
 \begin{align*}
 	\forall s\in\mathcal{S}^* = \mathcal{S}\backslash\{(x,0) : x\in\mathbb{Z}^d\},\, 
 	X(s) = \sum_{\delta\in\mathbb{Z}^d} X(s-(\delta, 1))\varphi(\delta, t-1)\\
@@ -77,8 +76,11 @@ Le modèle des piles abéliennes est
 	%&A(s) = \mathds{1}\{H(s) \geq \sigma_t\}
 % \min\{1, \lfloor H(s)/s(t)\rfloor\}
 \end{align*}
+
+Le problème est initialisé par le profil d'effondrements initiaux, $X(x, 0)$ pour $x\in\mathbb{Z}^d$. 
+
 \begin{exmp}
-Posons $d=1$ et $\varphi(x,t) = 1/3\mathds{1}(x)_{\{-1,0,1\}}$, le graphe correspondant est composé de la maille suivante \begin{center} \begin{tikzpicture}[main/.style = {draw, circle}] 
+Posons $d=1$ et $\varphi(x,t) =\mathds{1}(x)_{\{-1,0,1\}}$, le graphe correspondant est composé de la maille suivante \begin{center} \begin{tikzpicture}[main/.style = {draw, circle}] 
     
         \node[main] (1) {$$}; 
         \node[main] (2) [below of=1] {$ $};
@@ -92,19 +94,18 @@ Posons $d=1$ et $\varphi(x,t) = 1/3\mathds{1}(x)_{\{-1,0,1\}}$, le graphe corres
         \draw[-stealth] (1) -- (4);  
     \end{tikzpicture} 
 \end{center}
-Si l'on fixe $\varphi(\delta,t) = \mathds{1}(\delta)_{\llbracket -1, 1\rrbracket}$, alors la dynamique associée est la suivante : si un site $(x,t)$ est à hauteur $\omega(x,t)\geq \sigma_t = 3$ alors ce site distribue un grain à ses voisins $(x+\delta,t+1)$ pour $\delta\in \{-1,0,1\}$.
+La dynamique associée est la suivante : si un site $(x,t)$ est à hauteur $\omega(x,t)\geq  3$ alors ce site distribue un grain à ses voisins $(x+\delta,t+1)$ pour $\delta\in \{-1,0,1\}$.
 \end{exmp}
-\subsubsection{Normalisation}
-Dans toute la suite, on considère $\varphi$ normalisée, quitte à poser $\varphi(., t) = \varphi(., t)/\sigma_{t+1}$, et $\sigma_t = \sigma_t/\sigma_{t+1}$. A chaque instant $t$, on a trois cas, 
-\begin{itemize}
-	\item $\sigma_t < 1$ alors le système tend à se relaxer car à l'instant $t$, le graphe redistribue plus de grains qu'il peut en redistribuer à la ligne $t+1$.
-	\item $\sigma_t > 1$ alors le système tend à s'exciter.
-	\item $\sigma_t = 1$ alors le système se conserve (dans l'exemple précédent, le système est conservatif).
-\end{itemize}
-\subsection{Modèle probabiliste}
-Etant donné une configuration $\omega$ tirée uniformément parmi l'ensemble des configurations exactement instables qu'en $s=(0,0)\in\mathbb{Z}^d\times\mathbb{N}$, i.e $ \omega \in \Omega_{0} = \{\omega : \forall s\in (\mathbb{Z}^d\times\mathbb{N})\backslash\{(0,0)\}, \omega(s)<\sigma_t, \omega(0, 0) = \sigma_0\}$. 
 
-On note $p:s\in\mathcal{S}\mapsto \mathbb{E}(X(s))$, la quantité (normalisée) de grains qui s'effondrent sur $s$ sachant qu'il y a initialement ($t=0$) effondrement qu'en $0\in\mathbb{Z}^d$. 
+Dans toute la suite, on considère $\varphi$ normalisé, quitte à poser $\varphi(., t) = \varphi(., t)/c_{t+1}$, et $c_t = c_t/c_{t+1}$. 
+%A chaque instant $t$, on a trois cas, 
+%\begin{itemize}
+%	\item $\sigma_t < 1$ alors le système tend à se relaxer car à l'instant $t$, le graphe redistribue plus de grains qu'il peut en redistribuer à la ligne $t+1$.
+%	\item $\sigma_t > 1$ alors le système tend à s'exciter.
+%	\item $\sigma_t = 1$ alors le système se conserve (dans l'exemple précédent, le système est conservatif).
+%\end{itemize}
+\subsection{Modèle probabiliste}
+Considérons une configuration $\omega$ tirée uniformément parmi l'ensemble des configurations exactement instables qu'en $s=(0_{\mathbb{Z}^d},0)$, i.e $ \omega \in \Omega_{0} = \{\omega : \forall s\in (\mathbb{Z}^d\times\mathbb{N})\backslash\{(0,0)\}, \omega(s)<\sigma_t, \omega(0, 0) = c_0\}$. On pose $p(s) = \mathbb{E}(X(s))$, pour $s\in\mathcal{S}$, la quantité (normalisée) de grains qui s'effondrent sur $s$ sachant qu'il y a initialement ($t=0$) effondrement qu'en $0\in\mathbb{Z}^d$. 
 
 %\begin{align*}
 %	\forall \delta\in\mathcal{E}, t\in\mathbb{N}, \varphi^*_{\delta,t} = \frac{\varphi(\delta,t)}{s(t+1)}
@@ -156,7 +157,7 @@ De la relation de récurrence précédente, on obtient une relation identique à
 %					 \end{proof}
 		%Evident.
 \end{theorem}
-On définit la série génératrice $\tilde{p}(\Theta, t) = \sum_{x\in \mathbb{Z}^d}p(x,t)e^{i x.\Theta}$ et posons $\mathcal{L}(t,\Theta)= \sum_{\delta\in \mathbb{Z}^d} e^{i\delta.\Theta}\varphi(\delta,t-1)$, de manière à avoir 
+On définit la série génératrice $\tilde{p}(\Theta, t) = \sum_{x\in \mathbb{Z}^d}p(x,t)e^{i x.\Theta}$ et l'on pose  $\mathcal{L}(t,\Theta)= \sum_{\delta\in \mathbb{Z}^d} e^{i\delta.\Theta}\varphi(\delta,t-1)$, de manière à avoir 
 $\tilde{p}(\Theta, t) = \tilde{p}(\Theta, t-1)\mathcal{L}(t,\Theta)$.
 \begin{exmp}
 	L'exemple du graphe précédent donne 
@@ -165,22 +166,25 @@ $\tilde{p}(\Theta, t) = \tilde{p}(\Theta, t-1)\mathcal{L}(t,\Theta)$.
 	\end{align*}
 \end{exmp}
 	\begin{lemma}
-	Si l'effondrement initial a lieu en $(0,0)$ alors
+		Si l'effondrement initial a lieu en $0_{d}$ alors
 	\begin{align*}
-		\forall s\in S, p(s) = \sum_{\Delta : (E)}  \Psi(\Delta)
+		\forall (x,t)\in S, p(x,t) = \sum_{(\delta_0, \ldots, \delta_{t-1}) : (E)}  \prod_{i=0}^{t-1}\varphi(\delta_i, i)
 	\end{align*}
-	où $\Delta = (\delta_i) : (E)$ est la condition $\sum_{i=0}^{t-1}\delta_{i} = x$ et $\Psi(\Delta) = \prod_{i=0}^{t-1}\varphi(\delta_i,i)$.
+	où $(E)$ est la condition $\sum_{i=0}^{t-1}\delta_{i} = x$.
+	%et $\Psi(\Delta) = \prod_{i=0}^{t-1}\varphi(\delta_i,i)$.
 	\begin{proof}
-		Par hypothèse, l'effondrement initial a lieu en $(0,0)$ ainsi $\tilde{p}(\Theta, 0) = 1$. D'après le résultat qui précède, 
-		\begin{align*} \tilde{p}(\Theta, t) = %\prod_{i=1}^{t}\mathcal{L}(i,\theta) =
-		\sum_{\Delta\in (\mathbb{Z}^d)^{t}} e^{i\Theta.\sum_{i=0}^{t-1} \delta_i}\Psi(\Delta)\end{align*}
-			%et en appliquant la transformée de Fourier inverse, 
+		Par hypothèse, l'effondrement initial a lieu en $0$ ainsi $\tilde{p}(\Theta, 0) = 1$. D'après le résultat qui précède, 
+		\begin{align*} \tilde{p}(\Theta, t) = %\prod_{i=1}^{t}\mathcal{L}(i,\theta)\\ 
+		\sum_{(\delta_0, \ldots, \delta_{t-1})\in (\mathbb{Z}^d)^{t}} e^{i\Theta.\sum_{i=0}^{t-1} \delta_i} \prod_{i=0}^{t-1}\varphi(\delta_i, i)\end{align*}
+			Le résultat est obtenu en appliquant la transformée de Fourier inverse. 
 			%\begin{align*}
-			%	p(s) &%= \frac{1}{(2\pi)^d}\int_{\Theta\in [0,2\pi]^d} e^{-i\Theta.x} \tilde{p}(\Theta, t)\mathrm{d}\Theta
+			%	p(s) &= \frac{1}{(2\pi)^d}\int_{\Theta\in [0,2\pi]^d} e^{-i\Theta.x} \tilde{p}(\Theta, t)\mathrm{d}\Theta
 			%	= \sum_{\Delta \in (\mathbb{Z}^d)^t} \mathds{1}_{(E)}(\Delta)\Psi(\Delta)
 		%\end{align*} 
 	\end{proof}\end{lemma}
-	Dans le cas particulier où la quantité $\varphi=C\mathds{1}_E$, le lemme précédent dit que $p(s) = C^t\textup{Card}\{(\delta_i)\in (E^d)^t : \sum_{i=0}^{t-1}\delta_i=x\}$. %En se restreignant à $d=1$ et au cas où $\varphi^*$ est constante, nous avons le lemme suivant,
+	Dans le cas particulier où $\varphi(x,t)=C\mathds{1}_E(x)$, on obtient 
+	\begin{align*}
+	p(x,t) = C^t\textup{Card}\{(\delta_i)\in E^t : \sum_{i=0}^{t-1}\delta_i=x\}\end{align*}%En se restreignant à $d=1$ et au cas où $\varphi^*$ est constante, nous avons le lemme suivant,
 	%\begin{lemma}
 	%	Notons $(\delta_1, \ldots,\delta_c)$ une énumération de $\mathcal{E}, m=\max \mathcal{|E|}$, posons \begin{align*}
 	%	F(X,Y)=\bigg(\sum_{j\geq 0} Y^j\bigg)^c \prod_{i=1}^c \sum_{j\geq 0} X^{(\delta_i+m+1)j} = \frac{1}{(1-Y)^c}\prod_{i=1}^c \frac{1}{1-X^{\delta_i+m+1}}\end{align*}
@@ -197,12 +201,13 @@ $\tilde{p}(\Theta, t) = \tilde{p}(\Theta, t-1)\mathcal{L}(t,\Theta)$.
 	%	\end{proof}
 	%\end{lemma}
 \begin{lemma}
-	Soit $X\subset \mathbb{Z}^d$, on a $\tilde{p}(\Theta, t|X) = \tilde{p}(\Theta, t)\sum_{x\in X}e^{i\Theta.x}$ i.e $p(s|X)=\sum_{x'\in X}p(x-x',t)$.
+	Soit $A\subset \mathbb{Z}^d$, on suppose que pour tout $x\in A$, il y a effondrement, i.e, $X(x, 0) = \mathds{1}_A(x)$ alors $\tilde{p}(\Theta, t|X) = \tilde{p}(\Theta, t)\sum_{x\in A}e^{i\Theta.x}$ et $p(s|X)=\sum_{x'\in A}p(x-x',t)$.
 	\begin{proof}
-		Le résultat du lemme 1.1 étant valable pour $p(s|X)$, il suffit de poser que les sites $x\in X$ s'effondre initialement, i.e $p(x,0) = \mathds{1}_X(x)$ et alors \begin{align*}
-			\tilde{p}(\Theta, t|X)&=\tilde{p}(\Theta,t|\{0\})\tilde{p}(\Theta,0|X)\\
-					      &=\tilde{p}(\Theta, t)\sum_{x\in X}e^{i\Theta.x}
-		\end{align*}
+		Les sites $x\in A$ s'effondrent initialement, donc $p(x,0) = \mathds{1}_A(x)$ puis $\tilde{p}(\Theta,0) =\sum_{x\in A}e^{i\Theta.x}$. La dynamique est identique, on obtient $\tilde{p}(\Theta, t|A) = \tilde{p}(\Theta, t-1|A)\mathcal{L}(t, \Theta) = \tilde{p}(\Theta, t) \sum_{x\in A} e^{i\Theta.x}$.
+		%\begin{align*}
+		%	\tilde{p}(\Theta, t|X)&=\tilde{p}(\Theta,t|\{0\})\tilde{p}(\Theta,0|X)\\
+		%			      &=\tilde{p}(\Theta, t)\sum_{x\in X}e^{i\Theta.x}
+	%	\end{align*}
 	\end{proof}
 \end{lemma}
 
@@ -212,9 +217,10 @@ $\tilde{p}(\Theta, t) = \tilde{p}(\Theta, t-1)\mathcal{L}(t,\Theta)$.
 \begin{align*}
 	\forall x, y\in \mathbb{Z}^d, t\in\mathbb{N}^*, x\neq y, \\p(s_x \cap s_y) &= \sum_{(\delta_1,\delta_2)\in (\mathbb{Z}^d)^2} p(s_x-(\delta_1, 1) \cap s_y-(\delta_2,1))\varphi(\delta_1,t-1)\varphi(\delta_2,t-1)\label{1}\tag{1}
 \end{align*} 
-Et initialement, $p((x,0)\cap (y,0)) = A(x,0)A(y,0)$. \begin{proof}
+Et initialement, $p((x,0)\cap (y,0)) = X(x,0)X(y,0)$. \begin{proof}
 	%Comme $p\leq 1$, on sait que $X$ et $A$ coïncident en loi. 
-	La démonstration est semblable à celle du premier lemme et on obtient pour un effondrement initial en $(0,0)$, $\tilde{p}(\Theta_1, \Theta_2, t)=\sum_{(\Delta_1,\Delta_2)\in (\mathbb{Z}^d)^t\times(\mathbb{Z}^d)^t} e^{i(\Theta_1.s(\Delta_1)+\Theta_2.s(\Delta_2))} \Psi(\Delta_1)\Psi(\Delta_2)$ où l'on note $s(\Delta) = \sum_{\delta\in \Delta}\delta$ et cela se généralise facilement.
+	On pose $p(s_x\cap s_y) = \mathbb{E}(X(x,t)X(y,t))$ et l'on obtient le résultat.
+	%et on obtient pour un effondrement initial en $0$, $\tilde{p}(\Theta_1, \Theta_2, t)=\sum_{(\Delta_1,\Delta_2)\in (\mathbb{Z}^d)^t\times(\mathbb{Z}^d)^t} e^{i(\Theta_1.s(\Delta_1)+\Theta_2.s(\Delta_2))} \Psi(\Delta_1)\Psi(\Delta_2)$ où l'on note $s(\Delta) = \sum_{\delta\in \Delta}\delta$ et cela se généralise facilement.
 \end{proof}
 \end{lemma}
 
@@ -222,7 +228,7 @@ Et initialement, $p((x,0)\cap (y,0)) = A(x,0)A(y,0)$. \begin{proof}
 	Le processus respecte l'équation de Chapman-Kolmogorov, 
 \begin{align*}
 \forall t_2\leq t, \,\,p(s|s') = \sum_{y\in\mathbb{Z}^d}p(s|(y,t_2))p((y,t_2)|s')\end{align*}
-Avec la condition initiale, $p((x,t')|(x',t')) = \delta_{x, x'}$.
+Avec la condition initiale, $p((x,t')|(x',t')) = \mathds{1}_{\{x'\}}(x)$.
 \end{lemma}
 
 \begin{section}{Le cas où $\varphi(x, t) = 1/(2n+1)\mathds{1}(x)_{\llbracket -n; n\rrbracket}$}
@@ -250,21 +256,16 @@ Avec la condition initiale, $p((x,t')|(x',t')) = \delta_{x, x'}$.
 		\sigma^2(t) = \frac{1}{3} n (1+n) t
 	\end{align*}
 	\begin{proof}
-		Notons $P(X) = \sum_{i=0}^{2n} X^i$ et $\begin{pmatrix}t\\j\end{pmatrix}_{2n+1}$ le coefficient en $X^j$ dans $P(X)^t$, par le théorème qui précède, on a
-		\begin{align*}
-			(2n+1)^t p(j-nt,t) = \begin{pmatrix} t\\j \end{pmatrix}_{2n+1}
-		\end{align*}
-		Par symétrie, $p(x,t) = p(-x,t)$ et donc $\mathbb{E}(x : (x,t) \textup{ s'effondre}) = \sum_{x=-n t}^{n t} p(x,t) x = 0$.
-
-		Ainsi, \begin{align*}
-			\sigma^2(t) = \textup{Var}(x : (x,t) \textup{ s'effondre}) &=\sum_{x=-nt}^{nt} x^2 p(x,t) - \mathbb{E}(x : (x,t) \textup{ s'effondre})^2\\& = \frac{1}{(2n+1)^t} \sum_{j=0}^{2nt} (j-nt)^2 \begin{pmatrix}t\\j\end{pmatrix}_{2n+1} 
+		Notons $P(X) = \sum_{i=0}^{2n} X^i$ et $\begin{pmatrix}t\\j\end{pmatrix}_{2n+1}$ le coefficient en $X^j$ dans $P(X)^t$, par le théorème qui précède, on a $(2n+1)^t p(j-nt,t) = \begin{pmatrix} t\\j \end{pmatrix}_{2n+1}$
+		Par symétrie, $p(x,t) = p(-x,t)$ et donc $\sum_{x=-n t}^{n t} p(x,t) x = 0$. Ainsi, \begin{align*}
+			\sigma^2(t) = \sum_{x=-nt}^{nt} x^2 p(x,t) = \frac{1}{(2n+1)^t} \sum_{j=0}^{2nt} (j-nt)^2 \begin{pmatrix}t\\j\end{pmatrix}_{2n+1} 
 		\end{align*}
 
 		Aussi, les identités 4.2 et 4.3 de \cite{h2} sont
 		\begin{align*}
 			\sum_{j=0}^{2n t} j^2 \begin{pmatrix} t\\j\end{pmatrix}_{2n+1} = \frac{2nt (2n+1)^t}{12} (2n (3t+1)+2) \indent \indent \sum_{j=0}^{2n t} j \begin{pmatrix} t\\j \end{pmatrix}_{2n+1}  = \frac{2 nt (2n+1)^t}{2}
 		\end{align*}
-		d'où le résultat. Un calcul similaire peut-être mené dans le cas où $\varphi(x,t) = 1/(2n+1)\mathds{1}(x)_{\llbracket[-n,n\rrbracket+\mu}$, la variance est inchangée.
+		d'où le résultat. 
 	\end{proof}
 \end{theorem}
 %\begin{theorem}
@@ -325,16 +326,14 @@ Avec la condition initiale, $p((x,t')|(x',t')) = \delta_{x, x'}$.
 		X(t) \underset{t\to \infty}{\overset{\mathcal{L}}{\to}} \mathcal{N}(\mu t, \sigma(t)^2 = \frac{1}{3}tn(n+1))
 	\end{align*}
 	\begin{proof}
-		Nous pouvons supposer que $\varphi(x,t)=\mathds{1}(x)_{\llbracket -n,n\rrbracket}$, le théorème précédent nous dit que si $A(t)$ suit une loi normale de variance $\sigma^2(t)$ alors nécessairement 
+		Nous pouvons supposer que $\varphi(x,t)=\mathds{1}(x)_{\llbracket -n,n\rrbracket}$, le théorème précédent nous dit que si $X(t)$ est une loi normale alors nécessairement $X(t)\sim \mathcal{N}(0, \frac{1}{3}tn(n+1))$.
+	De plus, l'expression de la fonction caractéristique de $X(t)$ coïncident avec celle de la somme de variables i.i.d uniformes sur $\llbracket -n, n\rrbracket$ à un décalage prêt. 
+	
+	Soient $X_1, \ldots, X_t\overset{iid}{\sim} \matcal{U}(\llbracket-n,n\rrbracket)$, on a
 	\begin{align*}
-		\mu = C_1(t) = 0 \indent C_2(t) = \sigma^2(t)  = \frac{n(n+1)t}{3}
+		X(t) \sim \sum_{i=1}^t X_i - n t
 	\end{align*}
-
-	On va utiliser le théorème centrale-limite sur les $(X_i)$ qui sont i.i.d suivant $X$ une variable aléatoire discrète uniforme sur $\llbracket -n,n\rrbracket$. L'expression donnée de $p$ dans le théorème 2.2, $(2n+1)^tp(j-nt,t) = \begin{pmatrix} t\\j\end{pmatrix}_{2n+1}$ ainsi que le théorème 2.1 de \cite{h2} montrent que 
-	\begin{align*}
-		X(t) = \sum_{i=1}^t X_i - n t
-	\end{align*}
-	Le théorème centrale-limite donne le résultat, la variance peut être obtenue en utilisant l'expression de la variance de $X$ et l'équation précédente. Il est à noter que le papier \cite{10.2307/1426526} présente un théorème centrale limite pour les marches aléatoires embranchantes à milieux variales. Ce théorème s'applique dans ce cadre et est plus général que le résultat ainsi démontré.
+	Le théorème central limite s'applique et le résultat est obtenu. La variance peut aussi être obtenue en utilisant l'expression de la variance de la loi uniforme. Un théorème central limite pour marches aléatoires embranchantes à milieux variales est présenté dans \cite{10.2307/1426526}. Ce théorème s'applique dans ce cadre et est plus général que le résultat ainsi démontré.
 \end{proof}
 	
 \end{theorem}
@@ -355,12 +354,12 @@ Avec la condition initiale, $p((x,t')|(x',t')) = \delta_{x, x'}$.
 
 	où $\sigma(t)^2 = 1/3n(n+1)t$.
 	\begin{proof}
-		Supposons, sans perte de généralité que $\mu = 0$. D'après le lemme 1.2, on a pour tout $s\in \mathcal{S}$, 
+		Supposons, sans perte de généralité que $\mu = 0$. D'après le lemme 1.2, on a pour tout $(x,t)\in \mathcal{S}$, 
 		\begin{align*}
-		²p(s) = C^t\textup{Card}\{\{\delta_i\} \in \llbracket -n,n\rrbracket : k\sum_{i=0}^{t-1}\delta_i = x\}
+			p(x,t) = C^t\textup{Card}\{(\delta_0, \ldots, \delta_{t-1}) \in \llbracket -n,n\rrbracket^t : k\sum_{i=0}^{t-1}\delta_i = x\}
 		\end{align*}
 
-		Si $x$ n'est pas divise par $k$, alors $p(s) = 0$. Sinon, $p(s) = C^t\textup{Card}\{\{\delta_i\}\in\llbracket -n,n\rrbracket : \sum_{i=0}^{t-1}\delta_i = x/k\}$. D'après le théorème 2.3, on a le résultat.
+		Si $k$ ne divise pas $x$, alors $p(x,t) = 0$. Sinon, $p(x,t) = C^t\textup{Card}\{(\delta_0, \ldots, \delta_{t-1})\in\llbracket -n,n\rrbracket^t : \sum_{i=0}^{t-1}\delta_i = x/k\}$. D'après le théorème 2.3, on a le résultat.
 	\end{proof}
 \end{theorem}
 \end{section}
@@ -387,7 +386,7 @@ Le flux carré moyen $\Phi$ est défini par
 \begin{align*}
 	p(s_x\cap s_y) = \sum_{Z\in \mathcal{S}} f(Z) p(s_x|Z)p(s_y|Z)
 \end{align*}
-Définissons $F(t) = \sum_{x\in\mathbb{Z}^d}f(s_x)$. L'hypothèse d'indépendance de $\varphi$ par rapport à $t$ implique qu'il y a conservation du nombre moyen de grains qui se déplacent à chaque instant, donc de $\mathbb{E}\sum_{x\in\mathbb{Z}^d}A(s_x)=\sum_{x\in\mathbb{Z}^d}p(s_x)$. On pose, sans perte de généralité par linéarité, $\sum_{x\in\mathbb{Z}^d}p(s_x) = 1$.
+Définissons $F(t) = \sum_{x\in\mathbb{Z}^d}f(s_x)$. L'hypothèse d'indépendance de $\varphi$ par rapport à $t$ implique qu'il y a conservation du nombre moyen de grains qui se déplacent à chaque instant, donc de $\mathbb{E}\sum_{x\in\mathbb{Z}^d}X(s_x)=\sum_{x\in\mathbb{Z}^d}p(s_x)$. On pose, sans perte de généralité par linéarité, $\sum_{x\in\mathbb{Z}^d}p(s_x) = 1$.
 
 Nous obtenons en utilisant ce qui précède,
 \begin{align*}
@@ -482,11 +481,11 @@ et pour $t$ grand,
 	\Phi(t) \sim 4\sqrt{\frac{tn(n+1)}{3\pi}}
 \end{align*} 
 
-De plus, par rapport au théorème 1.7, on remarque que $\sigma(t) = \sigma(x : (x,t) \textup{ s'effondre})$ et $\Phi(t)$ sont proportionnels pour $t$ grand et le facteur de proportionnalité est $\frac{4}{\sqrt{\pi}}$ i.e \begin{align*}
+De plus, par rapport au théorème 1.7, on remarque que $\sigma(t)$ et $\Phi(t)$ sont proportionnels pour $t$ grand et le facteur de proportionnalité est $\frac{4}{\sqrt{\pi}}$ i.e \begin{align*}
 			\Phi(t) \sim \frac{4}{\sqrt{\pi}} \sigma(t)\end{align*}
 		\end{proof}\end{theorem}
 		\begin{exmp}
-			Dans le cas du graphe initialement traité par Dhar dans \cite{DHARBIS} qui nous sert d'exemple,
+			Dans le cas du graphe initialement traité par Dhar dans \cite{DHARBIS} et qui nous sert d'exemple,
 			\begin{align*}
 			\varphi = 1/3\mathds{1}_{\llbracket -1, 1\rrbracket}, \indent \Phi(t) \sim \sqrt{\frac{32 t}{3\pi}}\end{align*}
 		\end{exmp}
@@ -504,7 +503,7 @@ Dans les conditions du théorème précédent,
 \end{lemma}
 \section{Généralisations du modèle}
 \subsection{Généralisation à une mesure quelconque}
-Remarquons que $p(.,t-1)$ est défini par un produit de convolution de $p(.,t-1)$ avec une certaine mesure qui dépend de $t$. Donnons-nous une collection $(\mu_t)_{t\in\mathbb{N}^*}$ de mesures finies sur les boréliens de $\mathbb{R}$ de la forme  
+Remarquons que $p(.,t)$ est défini par un produit de convolution de $p(.,t-1)$ avec une certaine mesure qui dépend de $t$. Donnons-nous une collection $(\mu_t)_{t\in\mathbb{N}^*}$ de mesures finies sur les boréliens de $\mathbb{R}$ de la forme  
 \begin{align*}
 	\mathrm{d}\mu_t(y) = g_t(y)\mathrm{d}y
 \end{align*}
@@ -523,7 +522,7 @@ où $f$ est une fonction $\mu_t$-intégrale quelconque. On définit $\mathfrak{s
 \end{align*}
 
 \begin{lemma}
-	On note $p(x,t) = p(t)(x)$ et  $A(0)$ est le profil initial de l'avalanche en $t=0$, on a alors $p(t)(x) = \Phi(A(0))(t)(x)$ pour $t\geq 1$, en posant pour $t\geq 1$
+	On note $p(x,t) = p(t)(x)$ et  $X(0)$ est le profil initial de l'avalanche en $t=0$, on a alors $p(t)(x) = \Phi(X(0))(t)(x)$ pour $t\geq 1$, en posant pour $t\geq 1$
 	\begin{align*}
 		g_t(y) = \sum_{\delta \in \mathbb{Z}}\varphi(t-1,\delta)\delta'(y-\delta)
 	\end{align*}
@@ -540,7 +539,7 @@ où $f$ est une fonction $\mu_t$-intégrale quelconque. On définit $\mathfrak{s
 						  &= p(t)(x)
 		\end{align*}
 
-		La somme est finie, l'interversion somme-intégrable est donc justifiée, la dernière égalité est donnée par le théorème 1.1. L'initialisation est bien vérifiée car $p(0) = A(0)$.
+		La somme est finie, l'interversion somme-intégrable est donc justifiée, la dernière égalité est donnée par le théorème 1.1. L'initialisation est bien vérifiée car $p(0) = X(0)$.
 		%\begin{align*}
 		%	\mathbb{E}(A(t))(x)) = 
 		%\end{align*}
@@ -569,15 +568,15 @@ où $f$ est une fonction $\mu_t$-intégrale quelconque. On définit $\mathfrak{s
 
 		On pose $\tilde{p}(\theta, 0)=1$, alors
 		\begin{align*}
-			p(t)(x) = \int_{y\in\mathbb{R}^t}\mathds{1}_{y.\mathds{1}=x} \mathcal{P}(y)\mathrm{d}y
+		p(t)(x) = \int_{y\in\mathbb{R}^t}\mathds{1}_{\{x\}}(y_1+\ldots+y_t) \mathcal{P}(y)\mathrm{d}y
 		\end{align*}
 
 		Ainsi, si $\tilde{p}(\theta, 0) = \int p(x,0)e^{i x \theta}\mathrm{d}x$ alors 
 		\begin{align*}
-			p(t)(x) = \int_{z\in\mathbb{R}} p(0)(z)\int_{y\in\mathbb{R}^t}\mathds{1}_{y.\mathds{1}=x-z}\mathcal{P}(y)\mathrm{d}y\mathrm{d}z
+			p(t)(x) = \int_{z\in\mathbb{R}} p(0)(z)\int_{y\in\mathbb{R}^t}\mathds{1}_{\{x-z\}}(y_1+\ldots+y_t)\mathcal{P}(y)\mathrm{d}y\mathrm{d}z
 		\end{align*}
 
-		Dans le cas précédent, on a $\tilde{p}(\theta, 0) = \sum_{x\in\mathbb{R}}e^{ix \theta}p(x,0)$, ainsi pour passer d'une transforation de Fourier discrète à une transformation de Fourier continue, on remplace $p(0)(x)$ dans $\tilde{p}(\theta, 0) = \int p(0)(x)e^{ix\theta}\mathrm{d}x$ par $p(x,0)g_0(x)$ avec $g_0(x) = \sum_{d}\delta'(x-d)p(d,0)$. Soit $(y_1,\ldots,y_t)$ un chemin, on a dans ce cas
+		Dans le cas précédent, on a $\tilde{p}(\theta, 0) = \sum_{x\in\mathbb{R}}e^{ix \theta}p(x,0)$, on remplace $p(0)(x)$ dans $\tilde{p}(\theta, 0) = \int p(0)(x)e^{ix\theta}\mathrm{d}x$ par $p(x,0)g_0(x)$ avec $g_0(x) = \sum_{d}\delta'(x-d)p(d,0)$. Soit $(y_1,\ldots,y_t)$ un chemin, on a dans ce cas
 		\begin{align*}
 			\mathcal{P}(y) = \prod_{j=1}^t g_j(y_j) = \prod_{j=1}^t \varphi(j-1,y_j)
 		\end{align*}
@@ -637,7 +636,7 @@ pour une certaine constante $C_k$, puis similairement, on obtient $\Phi_k(t) \si
 
 En utilisant $\sum_{t'=0}^t (-1)^{t'}\begin{pmatrix}(1-k)/2\\t'\end{pmatrix} \sim t^{(k-1)/2}C_{2, k}$, on aurait, $\Phi_k(t) \sim C_k C_{2,k}t^{(k-1)/2}$ avec $C_{2, 2k} = 2^k/(2k-1)!!\sqrt{\pi}$ et $C_{2,2k+1}=1/k!$. De manière à ce qu'on ait
 \begin{align*}
-	\Phi_{2n+1}(t) \sim \frac{C_{2n+1}}{n!}t^{(k-1)/2} \indent \Phi_{2n}(t) \sim \frac{C_{2n}2^n\sqrt{\pi}}{(2n-1)!!} t^{(k-1)/2}
+	\Phi_{2n+1}(t) \sim \frac{C_{2n+1}}{n!}t^{n} \indent \Phi_{2n}(t) \sim \frac{C_{2n}2^n\sqrt{\pi}}{(2n-1)!!} t^{(2n-1)/2}
 \end{align*}
 
 
@@ -769,16 +768,16 @@ En utilisant $\sum_{t'=0}^t (-1)^{t'}\begin{pmatrix}(1-k)/2\\t'\end{pmatrix} \si
 %				\frac{\partial p(x,t)}{\partial t} = \int  p(x-y,t)\mathrm{d}\mu_t(y) - p(x,t)
 %			\end{align*}
 %		\end{section}
-			%\section{Questions ouvertes}
-			%Calculer les grandeurs suivantes
-			%\begin{align*}
-			%	\forall I\subset Z^d, \forall n\in \mathbb{N},\forall T\in\mathbb{N}, \mathds{P}(\sum_{x\in I}A(x,t)\geq n), \mathds{P}(\sum_{t=0}^T\sum_{x\in I}A(x,t) = 0)\\
-			%	\forall n\in\mathbb{N}, \tau_n = \min\{t\in\llbracket 0; +\infty\rrbracket \sum_{x\in Z^d}A(x,t) = n\}, \mathds{E}\tau_n\\
-			%	\forall x\in\mathbb{Z}^d, \forall n\in\mathbb{N}, \forall T\in\mathbb{N}, \mathds{P}(\sum_{\tau = 0}^T A(x,t) \geq n)\\
-			%	\forall \varphi, \forall t\in\mathbb{N}, \mathds{E}(\sum_{x\in \mathbb{Z}^d} A(x,t)\\
-			%	\forall n\in\mathbb{N}, S_n = \sum_{t=0}^{+\infty}(\sum_{x\in \mathbb{Z}^d}A(x,t))(\omega)\mathds{1}_{t=\tau_n}(\omega), \mathds{E}(S_n^2), \mathds{E}(S_n)\\
-			%	\forall T\in\mathbb{N}, \mathds{P}(\sum_{t=0}^T \sum_{x>moy(\mathcal{E})} A(x,t) = 0)\\
-			%	\end{align*}
+			\section{Questions ouvertes}
+			Calculer les grandeurs suivantes
+			\begin{align*}
+				\forall I\subset \mathbb{Z}^d, \forall n\in \mathbb{N},\forall T\in\mathbb{N}, \mathds{P}(\sum_{x\in I}A(x,t)\geq n), \mathds{P}(\sum_{t=0}^T\sum_{x\in I}A(x,t) = 0)\\
+				\forall n\in\mathbb{N}, \tau_n = \min\{t\in\llbracket 0; +\infty\rrbracket / \sum_{x\in Z^d}A(x,t) = n\}, \mathds{E}\tau_n\\
+				\forall x\in\mathbb{Z}^d, \forall n\in\mathbb{N}, \forall T\in\mathbb{N}, \mathds{P}(\sum_{\tau = 0}^T A(x,t) \geq n)\\
+		%		\forall \varphi, \forall t\in\mathbb{N}, \mathds{E}(\sum_{x\in \mathbb{Z}^d} A(x,t)\\
+				\forall n\in\mathbb{N}, S_n = \sum_{t=0}^{+\infty}(\sum_{x\in \mathbb{Z}^d}A(x,t))(\omega)\mathds{1}_{t=\tau_n}(\omega), \mathds{E}(S_n^2)\\
+				%\forall T\in\mathbb{N}, \mathds{P}(\sum_{t=0}^T \sum_{x>moy(\mathcal{E})} A(x,t) = 0)\\
+				\end{align*}
 			\bibliographystyle{alpha}
 			\bibliography{bs}
 			\end{document}
