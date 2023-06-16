@@ -1,5 +1,5 @@
-# abelian_sandpile_ensae
+# Abelian sandpiles
 
-Pour les rendus graphiques, la variable indiquant le chemin où les images sont rendues est ```File nomfichier``` dans la classe `Rendu.class`. Par défaut, elles sont rendues dans `/home/grothendieck/out`.
+For graphical rendering, edit ```File nomfichier``` in `Rendu.class`. By default, the rendering path is `/home/grothendieck/out`.
 
-Lire `./RapportInfo/p3.pdf` pour la documentation.
+Read `./RapportInfo/p3.pdf` for documentation.
